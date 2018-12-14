@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { addUser } from './actions';
+
 import { connect } from 'react-redux';
 import Tasks from './tasks';
+import axios from 'axios';
 
 
 class Users extends Component {
@@ -10,27 +11,30 @@ class Users extends Component {
     }
 
 
+   componentDidMount() {
+
+var config = {
+  headers: {"user-key": '87af5db782fc51d23b90ba56c78073f9'}
+};
+
+axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=49.958443&lon=-110.273262&count=3",config)
+    
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          data: res.data,
+          count: 12
+        })
+      })
+  }
+
+   
+
+
     render() {
         return (
             <div id='item'>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Tasks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.users.map(user => (
-                            <tr key={user.id}>
-                                <th>{user.id}</th>
-                                <td>{user.name}</td>
-                                <td>{user.tasks.map(x=><div key={x}>{x.task}</div>)}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <h1>Page2</h1>
             </div>
 
         );
@@ -38,9 +42,7 @@ class Users extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({
-  addUser: task => dispatch(addUser(task))
-})
 
 
-export default connect(null, mapDispatchToProps)(Users);
+
+export default Users;

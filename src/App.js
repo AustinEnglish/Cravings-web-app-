@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route,withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { } from './actions';
 import Navbar from './navbar';
 import Tasks from './tasks';
 import Admin from './admin';
@@ -39,4 +37,4 @@ const mapStateToProps = state => ({
 
 
 
-export default withRouter( connect(mapStateToProps)(App)  )
+export default App 

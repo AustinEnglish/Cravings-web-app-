@@ -12,7 +12,7 @@ class Admin extends Component {
   render() {
     return (
       <div id='item'>
-       <h1>Your Tasks Page</h1>
+       <h1>Page 3</h1>
       </div>
     );
   }
