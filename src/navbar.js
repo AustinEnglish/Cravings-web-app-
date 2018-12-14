@@ -14,21 +14,12 @@ class Navbar extends Component {
           <form className="form-inline">
 
             <Link className = "link"
-               to='/'>Tasks&nbsp;&nbsp;&nbsp;
-      </Link>
-
-            <Link className = "link"
-               to='/users'>Users&nbsp;&nbsp;&nbsp;
-      </Link>
-
-
-            <Link className = "link"
-              to='/admin'>Admin&nbsp;&nbsp;&nbsp;
+               to='/'>Main Page&nbsp;&nbsp;&nbsp;
       </Link>
 
           </form>
         </nav>
-         <div id="titlediv"><h1 >Tasks Manager</h1></div>
+         <div id="titlediv"><h1 >Project 2</h1></div>
       </div>
     );
   }

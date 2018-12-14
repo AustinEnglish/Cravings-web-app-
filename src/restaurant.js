@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 
 
-
-class Tasks extends Component {
+//single Restaurant page
+class Restaurant extends Component {
   state = {
    
   }
@@ -12,12 +12,10 @@ class Tasks extends Component {
   render() {
     return (
       <div id='item'>
-       <h1>page 1</h1>
+       <h1>Restaurant Data</h1>
       </div>
     );
   }
 }
 
-
-
-export default Tasks;
+export default Restaurant;
