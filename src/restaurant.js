@@ -12,7 +12,18 @@ class Restaurant extends Component {
   render() {
     return (
       <div id='item'>
-       <h1>Restaurant Data</h1>
+       <h1>Single Restaurant Data</h1>
+        {this.state.{/*what ever state is*/}.map((restaurant, index) => {
+          return(
+            <div key={index}>
+                {/* what
+                    data
+                    do
+                    we
+                    display? */}
+            </div>
+          )
+        })}
       </div>
     );
   }
