@@ -1,46 +1,100 @@
 import React, { Component } from 'react';
-import { Switch, Route,withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
-import Restaurant  from './restaurant';
+import Restaurant from './restaurant';
 import RestaurantList from './restaurantList';
 import axios from 'axios';
 
 
+
 class App extends Component {
-  state={
+  state = {
+  
+    location: [],
+    restData:[],
+    popularity:"",
+    cityName:"",
+    topFoods:[]
 
   }
 
 
 
 
-// componentDidMount() {
+componentDidMount() {
 
-// var config = {
-//   headers: {"user-key": '87af5db782fc51d23b90ba56c78073f9'}
-// };
+var api;
 
-// axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=49.958443&lon=-110.273262&count=3",config)
-    
-//       .then(res => {
-//         console.log(res.data);
-//         this.setState({
-//           data: res.data,
-//           count: 12
-//         })
-//       })
-//   }
+navigator.geolocation.getCurrentPosition((position) => {
+  api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+  this.getLocation(api);
+});
+
+  }
+
+
+ getLocation=(position)=> {
+  
+
+      var config = {
+        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+      };
+
+      axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
+
+        .then(res => {
+
+          this.getFoodData(res.data.location_suggestions[2])
+
+        })
+
+      
+     }
+
+
+getFoodData = (data)=>{
+
+  console.log(data);
+  this.setState({cityName: data.title})
+
+  var config = {
+        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+      };
+
+      axios.get("https://developers.zomato.com/api/v2.1/location_details?entity_id="+data.entity_id+"&entity_type=subzone",config)
+
+        .then(res => {
+          console.log(res.data);
+          this.setState({
+            cityName: data.title,
+            restData: res.data.best_rated_restaurant,
+            popularity: res.data.popularity,
+            topFoods: res.data.popularity.top_cuisines
+          })
+
+        })
+
+}
+
 
 
 
   render() {
     return (
-      <div className = "mainContainer">
-      <Navbar/>
+      <div className="mainContainer">
+        <Navbar />
+
+        {
+          this.state.restData && (
+            <p>{this.state.cityName}</p>
+
+          )
+
+        }
         <Switch>
-              <Route exact path='/' render={(renderProps) => <MainPage/>} />
-          </Switch>
+          <Route exact path='/' render={(renderProps) => <MainPage />} />
+        </Switch>
       </div>
     );
   }
