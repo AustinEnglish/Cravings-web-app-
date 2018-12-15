@@ -8,6 +8,7 @@ class MainPage extends Component {
    
   }
 
+
 //   redirectToRestaurantJS = (index) => {
 //   <Redirect to="/restaurant" />
 // }
@@ -17,6 +18,16 @@ class MainPage extends Component {
 // }
 
 
+
+
+  redirectToRestaurantJS = (index) => {
+    <Redirect to="/restaurant" />
+  }
+  
+  redirectToRestaurantListJS = () => {
+    <Redirect to="/resturantList" />
+  }
+  
 
   render() {
     return (

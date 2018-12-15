@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import { Switch, Route, withRouter } from 'react-router-dom';
-
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
@@ -77,8 +75,6 @@ getFoodData = (data)=>{
         })
 
 }
-
-
 
   render() {
     return (
