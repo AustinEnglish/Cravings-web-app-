@@ -90,7 +90,7 @@ getFoodData = (data)=>{
         {
           this.state.restData && (
         <Switch>
-          <Route exact path='/' render={(renderProps) => <MainPage restData={this.props.restData} popularity={this.props.popularity} cityName={this.props.cityName}/>} />
+          <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName}/>} />
         </Switch>
        
        
