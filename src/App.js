@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-=======
+
 import { Switch, Route, withRouter } from 'react-router-dom';
->>>>>>> 199fa32c1c2a11c7cb6aa393d8f8df42329140c1
+
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
@@ -81,24 +79,6 @@ getFoodData = (data)=>{
 
 }
 
-// axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&entity_type:subzone",config)
-    
-//       .then(res => {
-//         console.log(res.data.location.suggestion);
-//         this.setState({
-//           data: res.data,
-//           count: 12
-//         })
-//       })
-//   }
-
-redirectToRestaurantJS = (index) => {
-  <Redirect to="/restaurant" />
-}
-
-redirectToRestaurantListJS = () => {
-  <Redirect to="/resturantList" />
-}
 
 
   render() {
@@ -116,32 +96,7 @@ redirectToRestaurantListJS = () => {
         <Switch>
           <Route exact path='/' render={(renderProps) => <MainPage/>} />
         </Switch>
-          <div>
-            {/* summary */}
-            <div>
-              <p>Restaurant decider app. Detailed informations on specific restaurants</p>
-            </div>
-            {/* map function for trending restaurant */}
-            <h1>Top Trending Restaurant</h1>
-            {this.state.{/*what ever state is*/}.map((restaurant, index) => {
-              return(
-                <div key={index}>
-                  <img src={Restaurant.featured_image} onClick={ () => this.redirectToRestaurantJS(index)}/>
-                </div>
-              )
-            })}
-          </div>
-          <div>
-            <h1>Find Restaurant</h1>
-            <input type="text" placeholder="Search.."/>
-            <button type="button" className="btn btn-primary" onClick={this.redirectToRestaurantListJS()}>Submit</button>
-            <select className="custom-select-md">
-              <option>dropdown</option>
-              <option value="1">some</option>
-              <option value="2">text</option>
-              <option value="3">hello</option>
-            </select>
-          </div>
+          
       </div>
     );
   }
