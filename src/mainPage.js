@@ -46,8 +46,8 @@ class MainPage extends Component {
             {this.props.restData.map((restaurant, index) => {
               return(
                 <div key={index}>
-                  <p>{restaurant.name}</p>
-                  <img src={restaurant.image} onClick={ () => this.redirectToRestaurantJS(index)}/>
+                  <p>{restaurant.restaurant.name}</p>
+                  <img src={restaurant.restaurant.photos_url} onClick={ () => this.redirectToRestaurantJS(index)}/>
                 </div>
               )
             })}
