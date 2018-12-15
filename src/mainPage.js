@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-
+import {Redirect} from 'react-router-dom';
 
 
 //main page that'll have all the data
 class MainPage extends Component {
   state = {
-   
+    // restData:[], top ten restaurant array in obj
+    // popularity:"", string
+    // cityName:"", string
+    // topFoods:[] 
   }
 
   redirectToRestaurantJS = (index) => {
@@ -27,13 +30,15 @@ class MainPage extends Component {
             </div>
             {/* map function for trending restaurant */}
             <h1>Top Trending Restaurant</h1>
-            {this.state.{/*what ever state is*/}.map((restaurant, index) => {
+            {this.props.restData.map((restaurant, index) => {
               return(
                 <div key={index}>
-                  <img src={Restaurant.featured_image} onClick={ () => this.redirectToRestaurantJS(index)}/>
+                  <p>{restaurant.name}</p>
+                  <img src={restaurant.image} onClick={ () => this.redirectToRestaurantJS(index)}/>
                 </div>
               )
             })}
+            {console.log(this.props.restData)}
           </div>
           <div>
             <h1>Find Restaurant</h1>
