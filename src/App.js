@@ -11,7 +11,6 @@ import axios from 'axios';
 class App extends Component {
   state = {
   
-    location: [],
     restData:[],
     popularity:"",
     cityName:"",
@@ -65,7 +64,7 @@ getFoodData = (data)=>{
       axios.get("https://developers.zomato.com/api/v2.1/location_details?entity_id="+data.entity_id+"&entity_type=subzone",config)
 
         .then(res => {
-          console.log(res.data);
+          console.log(res.data.best_rated_restaurant);
           this.setState({
             cityName: data.title,
             restData: res.data.best_rated_restaurant,
@@ -81,17 +80,22 @@ getFoodData = (data)=>{
     return (
       <div className="mainContainer">
         <Navbar />
+        {
+        this.state.restData &&(
+
+          <p>this.state.restData[0].name</p>
+        )
+        }
 
         {
           this.state.restData && (
-            <p>{this.state.cityName}</p>
-
-          )
-
-        }
         <Switch>
-          <Route exact path='/' render={(renderProps) => <MainPage/>} />
+          <Route exact path='/' render={(renderProps) => <MainPage restData={this.props.restData} popularity={this.props.popularity} cityName={this.props.cityName}/>} />
         </Switch>
+       
+       
+
+          )}
           
       </div>
     );

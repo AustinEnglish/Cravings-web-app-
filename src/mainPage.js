@@ -11,6 +11,18 @@ class MainPage extends Component {
     // topFoods:[] 
   }
 
+
+//   redirectToRestaurantJS = (index) => {
+//   <Redirect to="/restaurant" />
+// }
+
+// redirectToRestaurantListJS = () => {
+//   <Redirect to="/resturantList" />
+// }
+
+
+
+
   redirectToRestaurantJS = (index) => {
     <Redirect to="/restaurant" />
   }
@@ -19,6 +31,7 @@ class MainPage extends Component {
     <Redirect to="/resturantList" />
   }
   
+
   render() {
     return (
       <div id='item'>
