@@ -5,6 +5,10 @@ import {Redirect} from 'react-router-dom';
 //main page that'll have all the data
 class MainPage extends Component {
   state = {
+
+    restaurant: {},
+    redirRestPage :false
+
     // restData:[], top ten restaurant array in obj
     // popularity:"", string
     // cityName:"", string
@@ -15,7 +19,9 @@ class MainPage extends Component {
 
   redirectToRestaurantJS = (restaurant) => {
     alert("Made it here");
-    <Redirect to={`/restaurant/${restaurant.restaurant.name}`}/>
+    //<Redirect to={`/restaurant/${restaurant.restaurant.name}`}/>
+    this.setState({redirRestPage:true, restaurant:restaurant})
+     
   }
   
   redirectToRestaurantListJS = () => {
@@ -44,7 +50,14 @@ class MainPage extends Component {
                 </div>
               )
             })}
-            {console.log(this.props.restData)}
+
+            {
+              this.state.redirRestPage && (
+              <Redirect to={`/restaurant/${this.state.restaurant}`}/>
+              )
+
+            }
+
           </div>
            <p>&nbsp;</p>
             <p>&nbsp;</p>
