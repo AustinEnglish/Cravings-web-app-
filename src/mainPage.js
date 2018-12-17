@@ -19,7 +19,7 @@ redir: false
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
     this.setState({redir:true})
-    alert("Made it here");
+
     
      
   }

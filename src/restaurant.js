@@ -13,17 +13,12 @@ class Restaurant extends Component {
     return (
       <div id='item'>
        <h1>Single Restaurant Data</h1>
-      <p>{this.state.props.singleRest.restaurant.name}</p>
+
+       
+
+      <p>{this.props.singleRest.name}</p>
   
-        {/* {this.props.map((restaurant, index) => {
-          return(
-            <div key={index}>
-                <p>{this.restaurant.restaurant.name}</p>
-                <a href={this.restaurant.restaurant.menu_url}>Menu</a>
-                
-            </div>
-          )
-        })} */}
+
       </div>
     );
   }
