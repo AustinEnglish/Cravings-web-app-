@@ -13,8 +13,6 @@ class Restaurant extends Component {
     return (
       <div id='item'>
        <h1>Single Restaurant Data</h1>
-      <p>{this.state.props.singleRest.restaurant.name}</p>
-  
         {/* {this.props.restData.map((restaurant, index) => {
           return(
             <div key={index}>

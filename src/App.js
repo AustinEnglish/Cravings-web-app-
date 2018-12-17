@@ -43,17 +43,17 @@ navigator.geolocation.getCurrentPosition((position) => {
   
 
 
-      // var config = {
-      //   headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
-      // };
+      var config = {
+        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+      };
 
-      // axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
+      axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
 
-      //   .then(res => {
+        .then(res => {
 
-      //     this.getFoodData(res.data.location_suggestions[2])
+          this.getFoodData(res.data.location_suggestions[2])
 
-      //   })
+        })
 
       
      }

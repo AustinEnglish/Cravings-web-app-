@@ -34,7 +34,6 @@ redir: false
       <div id='item'>
        <div>
             {/* summary */}
-  {/*<a href={restaurant.restaurant.menu_url}>Menu{/* onClick={ () => this.redirectToRestaurantJS(index)}*/}}
             {/* map function for trending restaurant */}
             <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
             {this.props.restData.map((restaurant, index) => {
@@ -43,6 +42,7 @@ redir: false
                 <button className="float-left"  onClick={()=>this.redirectToRestaurantJS(restaurant)}> 
                    {restaurant.restaurant.name}
                    <p>&nbsp;</p>
+                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
                 <div id="pokeBox" className="float-left" key={index}>
                  
                 </div>
@@ -60,6 +60,7 @@ redir: false
 
           </div>
            <p>&nbsp;</p>
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
           <div>
             <h5>Find Restaurants</h5>
