@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
@@ -92,7 +92,7 @@ getFoodData = (data)=>{
           this.state.restData && (
         <Switch>
           <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName}/>} />
-           <Route path='/restaurant/:restaurant/' render={(renderProps) => <Restaurant/>} />
+           <Route path='/restaurant/:name/' render={(renderProps) => <Restaurant/>} />
         </Switch>
        
        

@@ -15,7 +15,7 @@ class MainPage extends Component {
 
   redirectToRestaurantJS = (restaurant) => {
     alert("Made it here");
-    <Redirect to={`/restaurant/${restaurant}`}/>
+    <Redirect to={`/restaurant/${restaurant.restaurant.name}`}/>
   }
   
   redirectToRestaurantListJS = () => {
