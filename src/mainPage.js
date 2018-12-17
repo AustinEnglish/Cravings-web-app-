@@ -28,13 +28,19 @@ class MainPage extends Component {
       <div id='item'>
        <div>
             {/* summary */}
+  {/*<a href={restaurant.restaurant.menu_url}>Menu{/* onClick={ () => this.redirectToRestaurantJS(index)}*/}}
             {/* map function for trending restaurant */}
             <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
             {this.props.restData.map((restaurant, index) => {
               return(
                 <div key={index}>
-                  <p>{restaurant.restaurant.name}</p>
-                  <a href={restaurant.restaurant.menu_url}>Menu{/* onClick={ () => this.redirectToRestaurantJS(index)}*/}</a>
+                <button className="float-left"  onClick={()=>this.redirectToRestaurantJS(restaurant)}> 
+                   {restaurant.restaurant.name}
+                   <p>&nbsp;</p>
+                <div id="pokeBox" className="float-left" key={index}>
+                 
+                </div>
+                 </button>
                 </div>
               )
             })}
