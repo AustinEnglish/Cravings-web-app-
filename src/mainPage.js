@@ -12,53 +12,44 @@ class MainPage extends Component {
   }
 
 
-//   redirectToRestaurantJS = (index) => {
-//   <Redirect to="/restaurant" />
-// }
 
-// redirectToRestaurantListJS = () => {
-//   <Redirect to="/resturantList" />
-// }
-
-
-
-
-  redirectToRestaurantJS = (index) => {
-    <Redirect to="/restaurant" />
+  redirectToRestaurantJS = (restaurant) => {
+    alert("Made it here");
+    <Redirect to={`/restaurant/${restaurant}`}/>
   }
   
   redirectToRestaurantListJS = () => {
-    <Redirect to="/resturantList" />
+    <Redirect to="/resturantList"/>
   }
   
 
   render() {
     return (
       <div id='item'>
-       <h1>Main Page</h1>
        <div>
             {/* summary */}
-            <div>
-              <p>Restaurant decider app. Detailed informations on specific restaurants</p>
-            </div>
             {/* map function for trending restaurant */}
-            <h1>Top Trending Restaurant</h1>
+            <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
             {this.props.restData.map((restaurant, index) => {
               return(
                 <div key={index}>
-                  <p>{restaurant.restaurant.name}</p>
 
-                  <img src={restaurant.image} onClick={ () => this.redirectToRestaurantJS(index)}/>
-
-                  <img src={restaurant.restaurant.photos_url} onClick={ () => this.redirectToRestaurantJS(index)}/>
-
+                <button className="float-left"  onClick={()=>this.redirectToRestaurantJS(restaurant)}> 
+                   {restaurant.restaurant.name}
+                   <p>&nbsp;</p>
+                <div id="pokeBox" className="float-left" key={index}>
+                 
+                </div>
+                 </button>
                 </div>
               )
             })}
             {console.log(this.props.restData)}
           </div>
+           <p>&nbsp;</p>
+            <p>&nbsp;</p>
           <div>
-            <h1>Find Restaurant</h1>
+            <h5>Find Restaurants</h5>
             <input type="text" placeholder="Search.."/>
             <button type="button" className="btn btn-primary" onClick={this.redirectToRestaurantListJS()}>Submit</button>
             <select className="custom-select-md">
