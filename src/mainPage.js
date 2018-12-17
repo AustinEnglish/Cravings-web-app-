@@ -33,14 +33,8 @@ class MainPage extends Component {
             {this.props.restData.map((restaurant, index) => {
               return(
                 <div key={index}>
-
-                <button className="float-left"  onClick={()=>this.redirectToRestaurantJS(restaurant)}> 
-                   {restaurant.restaurant.name}
-                   <p>&nbsp;</p>
-                <div id="pokeBox" className="float-left" key={index}>
-                 
-                </div>
-                 </button>
+                  <p>{restaurant.restaurant.name}</p>
+                  <a href={restaurant.restaurant.menu_url}>Menu{/* onClick={ () => this.redirectToRestaurantJS(index)}*/}</a>
                 </div>
               )
             })}
