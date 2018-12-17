@@ -47,7 +47,7 @@ class MainPage extends Component {
               return(
                 <div key={index}>
                   <p>{restaurant.restaurant.name}</p>
-                  <img src={restaurant.restaurant.photos_url} onClick={ () => this.redirectToRestaurantJS(index)}/>
+                  <a href={restaurant.restaurant.menu_url}>Menu{/* onClick={ () => this.redirectToRestaurantJS(index)}*/}</a>
                 </div>
               )
             })}
