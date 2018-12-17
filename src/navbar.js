@@ -19,7 +19,7 @@ class Navbar extends Component {
 
           </form>
         </nav>
-         <div id="titlediv"><h1 >Project 2</h1></div>
+         <div id="titlediv"><h1 >Restaruant Finder</h1></div>
       </div>
     );
   }

@@ -25,6 +25,7 @@ componentDidMount() {
 
 var api;
 
+
 navigator.geolocation.getCurrentPosition((position) => {
   api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
   this.getLocation(api);
@@ -33,8 +34,14 @@ navigator.geolocation.getCurrentPosition((position) => {
   }
 
 
+
+
+
+
+
  getLocation=(position)=> {
   
+
 
       var config = {
         headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
@@ -80,17 +87,12 @@ getFoodData = (data)=>{
     return (
       <div className="mainContainer">
         <Navbar />
-        {
-        this.state.restData &&(
-
-          <p>this.state.restData[0].name</p>
-        )
-        }
-
+       
         {
           this.state.restData && (
         <Switch>
           <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName}/>} />
+           <Route path='/restaurant/:restaurant/' render={(renderProps) => <Restaurant/>} />
         </Switch>
        
        
