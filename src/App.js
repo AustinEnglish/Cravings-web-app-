@@ -16,18 +16,6 @@ class App extends Component {
     cityName:"",
     topFoods:[],
 
-    // singleRest: {
-    //   name:'',
-    //   url :'',
-    //   user_rating_num: '',
-    //   user_rating_text: '',
-    //   votes: '',
-    //   address: '',
-    //   cuisines: '',
-    //   price_range:'',
-    //   average_cost_for_two: ''
-
-    // }
     singleRest:{}
 
   }
