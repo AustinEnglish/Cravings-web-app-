@@ -5,6 +5,7 @@ import MainPage from './mainPage';
 import Restaurant from './restaurant';
 import RestaurantList from './restaurantList';
 import axios from 'axios';
+import GoogleImageSearch from 'free-google-image-search'
 
 
 
@@ -15,19 +16,6 @@ class App extends Component {
     popularity:"",
     cityName:"",
     topFoods:[],
-
-    // singleRest: {
-    //   name:'',
-    //   url :'',
-    //   user_rating_num: '',
-    //   user_rating_text: '',
-    //   votes: '',
-    //   address: '',
-    //   cuisines: '',
-    //   price_range:'',
-    //   average_cost_for_two: ''
-
-    // }
     singleRest:{}
 
   }
@@ -94,6 +82,8 @@ getFoodData = (data)=>{
 }
 
 
+
+
 callRestaurantPage = (rest)=>{
 var tempObj = {}
 tempObj.name = rest.restaurant.name
@@ -125,6 +115,7 @@ tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
     return (
       <div className="mainContainer">
         <Navbar />
+        <script src="https://www.google.com/jsapi"></script>
        
         {
           this.state.restData && (

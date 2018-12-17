@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "free-google-image-search": "^1.0.0",
+    "google-images": "^2.1.0",
+    "image-search-google": "^1.0.10",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-geocode": "^0.1.2",
