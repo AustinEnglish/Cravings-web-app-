@@ -16,8 +16,19 @@ class App extends Component {
     cityName:"",
     topFoods:[],
 
-    singleRest: [],
-    restRedir: false
+    // singleRest: {
+    //   name:'',
+    //   url :'',
+    //   user_rating_num: '',
+    //   user_rating_text: '',
+    //   votes: '',
+    //   address: '',
+    //   cuisines: '',
+    //   price_range:'',
+    //   average_cost_for_two: ''
+
+    // }
+    singleRest:{}
 
   }
 
@@ -84,14 +95,26 @@ getFoodData = (data)=>{
 
 
 callRestaurantPage = (rest)=>{
-console.log(rest);
 var tempObj = {}
 tempObj.name = rest.restaurant.name
 tempObj.url = rest.restaurant.url
+tempObj.user_rating_num = rest.restaurant.user_rating.aggregate_rating;
+tempObj.user_rating_text = rest.restaurant.user_rating.rating_text;
+tempObj.votes = rest.restaurant.user_rating.votes;
+tempObj.address = rest.restaurant.location.address + ", " + rest.restaurant.location.locality + ", " + rest.restaurant.location.city
+tempObj.cuisines = rest.restaurant.cuisines
+tempObj.price_range = rest.restaurant.price_range
+tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
 
 
-  this.setState({singleRest:rest,restRedir:true})
-  alert(rest.restaurant.name)
+
+  this.setState({
+    ...this.state,
+
+    singleRest: tempObj
+          
+},()=>console.log(this.state.singleRest.name))
+
 
 
 
@@ -106,11 +129,11 @@ tempObj.url = rest.restaurant.url
         {
           this.state.restData && (
         <Switch>
-          <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage}/>} />
-          {
-            this.state.restRedir&&(
-              <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
+              <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage}/>} />
+               <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
             )
+          }
+             
           }
         </Switch>
        
