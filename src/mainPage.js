@@ -6,8 +6,7 @@ import {Redirect} from 'react-router-dom';
 class MainPage extends Component {
   state = {
 
-    restaurant: {},
-    redirRestPage :false
+redir: false
 
     // restData:[], top ten restaurant array in obj
     // popularity:"", string
@@ -18,9 +17,10 @@ class MainPage extends Component {
 
 
   redirectToRestaurantJS = (restaurant) => {
+    this.props.callRestaurantPage(restaurant);
+    this.setState({redir:true})
     alert("Made it here");
-    //<Redirect to={`/restaurant/${restaurant.restaurant.name}`}/>
-    this.setState({redirRestPage:true, restaurant:restaurant})
+    
      
   }
   
@@ -52,11 +52,11 @@ class MainPage extends Component {
             })}
 
             {
-              this.state.redirRestPage && (
-              <Redirect to={`/restaurant/${this.state.restaurant}`}/>
+              this.state.redir &&(
+                <Redirect to={`/restaurant/`}/>
               )
-
             }
+
 
           </div>
            <p>&nbsp;</p>

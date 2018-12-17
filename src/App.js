@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter,Redirect } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
@@ -14,7 +14,10 @@ class App extends Component {
     restData:[],
     popularity:"",
     cityName:"",
-    topFoods:[]
+    topFoods:[],
+
+    singleRest: [],
+    restRedir: false
 
   }
 
@@ -26,6 +29,7 @@ componentDidMount() {
 var api;
 
 
+
 navigator.geolocation.getCurrentPosition((position) => {
   api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
   this.getLocation(api);
@@ -35,25 +39,21 @@ navigator.geolocation.getCurrentPosition((position) => {
 
 
 
-
-
-
-
  getLocation=(position)=> {
   
 
 
-      var config = {
-        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
-      };
+      // var config = {
+      //   headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+      // };
 
-      axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
+      // axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
 
-        .then(res => {
+      //   .then(res => {
 
-          this.getFoodData(res.data.location_suggestions[2])
+      //     this.getFoodData(res.data.location_suggestions[2])
 
-        })
+      //   })
 
       
      }
@@ -61,7 +61,6 @@ navigator.geolocation.getCurrentPosition((position) => {
 
 getFoodData = (data)=>{
 
-  console.log(data);
   this.setState({cityName: data.title})
 
   var config = {
@@ -83,6 +82,22 @@ getFoodData = (data)=>{
 
 }
 
+
+callRestaurantPage = (rest)=>{
+console.log(rest);
+var tempObj = {}
+tempObj.name = rest.restaurant.name
+tempObj.url = rest.restaurant.url
+
+
+  this.setState({singleRest:rest,restRedir:true})
+  alert(rest.restaurant.name)
+
+
+
+
+}
+
   render() {
     return (
       <div className="mainContainer">
@@ -91,13 +106,19 @@ getFoodData = (data)=>{
         {
           this.state.restData && (
         <Switch>
-          <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName}/>} />
-           <Route path='/restaurant/:name/' render={(renderProps) => <Restaurant/>} />
+          <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage}/>} />
+          {
+            this.state.restRedir&&(
+              <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
+            )
+          }
         </Switch>
+       
        
        
 
           )}
+
           
       </div>
     );
