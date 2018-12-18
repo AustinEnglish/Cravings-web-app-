@@ -25,6 +25,10 @@ class App extends Component {
       {
         username: '123',
         password: '123'
+      },
+      {
+        username: '246',
+        password: '246'
       }
     ]
 
@@ -36,6 +40,7 @@ class App extends Component {
     for (var user of this.state.users) {
       if (user.username === username && user.password === password) {
         this.setState({ loggedIn: true })
+        this.componentDidMount1();
         return true;
 
       }
@@ -45,7 +50,7 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
+  componentDidMount1 = () => {
 
     var api;
 
