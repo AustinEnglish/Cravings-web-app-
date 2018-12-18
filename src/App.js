@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
+import Cuisines from './cuisines';
 import Login from './login';
-import RestaurantList from './restaurantList';
 import axios from 'axios';
 
 const AUSTIN_API_KEY = '87af5db782fc51d23b90ba56c78073f9';
@@ -61,6 +61,7 @@ class App extends Component {
 
 
 
+
   getLocation = (position, city) => {
 
 
@@ -103,13 +104,13 @@ class App extends Component {
     axios.get("https://developers.zomato.com/api/v2.1/location_details?entity_id=" + data.entity_id + "&entity_type=subzone", config)
 
       .then(res => {
-        console.log(res.data.best_rated_restaurant);
+        console.log(res.data);
         this.setState({
           cityName: data.title,
           restData: res.data.best_rated_restaurant,
           popularity: res.data.popularity,
-          topFoods: res.data.popularity.top_cuisines
-        })
+          topFoods: res.data.top_cuisines
+        }, () => console.log(this.state.topFoods))
 
       })
 
@@ -175,6 +176,7 @@ class App extends Component {
                 <Route exact path='/' render={(renderProps) => <Login login={this.login} />} />
                 <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} />} />
                 <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest} />} />
+                <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} />} />
               </Switch>
             </div>
 

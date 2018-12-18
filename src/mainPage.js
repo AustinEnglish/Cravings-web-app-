@@ -8,7 +8,6 @@ class MainPage extends Component {
     choice:"",
     redir: false,
     redirCuisines: false,
-     redirRestList: false,
     zip: '',
     city:'',
 
@@ -58,12 +57,12 @@ var unirest = require('unirest');
 
     if(this.state.choice === "restaurants"){
       this.props.getLocationFromZip(this.state.zip,this.state.city);
-      this.setState({ redirRestList: true })
+     
 
     }
     else if(this.state.choice === "cuisines"){
-      //call function
-      //set bool
+    this.props.getLocationFromZip(this.state.zip,this.state.city);
+       this.setState({ redirCuisines: true })
     }
    
   }
@@ -118,7 +117,13 @@ var unirest = require('unirest');
               <Redirect to={`/restaurant/`} />
             )
           }
-          
+
+          {
+            this.state.redirCuisines && (
+              <Redirect to={`/cuisines/`} />
+            )
+          }
+
       </div>
     );
   }
