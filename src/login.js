@@ -10,14 +10,15 @@ class Login extends Component {
      }
 
     checkLogin = () => {
+        this.componentDidMount1()
         var validLogin = this.props.login(this.state.username, this.state.password);
         this.setState({
             validLogin: validLogin,
         })
     }
 
-    componentDidMount = () => {
-        
+    componentDidMount1 = () => {
+        alert("here");
          var validLogin = this.props.login("", "");
         
     }
