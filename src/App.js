@@ -17,7 +17,7 @@ class App extends Component {
     popularity:"",
     cityName:"",
     topFoods:[],
-    singleRest:{}
+    singleRest:{},
 
   }
 
@@ -28,14 +28,15 @@ componentDidMount() {
 
 var api;
 
-
-
 navigator.geolocation.getCurrentPosition((position) => {
   api +=`lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
   this.getLocation(api, "irvine");
 });
 
   }
+
+
+
 
 
 
@@ -66,6 +67,8 @@ navigator.geolocation.getCurrentPosition((position) => {
 
       
      }
+
+
 
 
 getFoodData = (data)=>{
