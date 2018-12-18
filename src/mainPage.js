@@ -10,7 +10,8 @@ class MainPage extends Component {
     redirCuisines: false,
      redirRestList: false,
     zip: '',
-    city:''
+    city:'',
+    imageExist:false
 
 
     // restData:[], top ten restaurant array in obj
@@ -19,6 +20,26 @@ class MainPage extends Component {
     // topFoods:[] 
   }
 
+
+getImage =()=>{
+
+
+var unirest = require('unirest');
+  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=Donald+Trump")
+.header("X-RapidAPI-Key", "bcff5a2730msh7171bbdceb80891p1c3400jsn1ec6cd130e75")
+.end(function (result) {
+ console.log(result.body.value[0].url);
+ 
+   return (result.body.value[0].url);
+ 
+ 
+});
+
+  
+ 
+
+
+}
 
 
   redirectToRestaurantJS = (restaurant) => {
@@ -57,6 +78,7 @@ class MainPage extends Component {
               <div key={index}>
                 <button className="float-left" onClick={() => this.redirectToRestaurantJS(restaurant)}>
                   {restaurant.restaurant.name}
+                  <img src={this.getImage()} height="100" width="100" />
                   <p>&nbsp;</p>
                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
                   <div id="pokeBox" className="float-left" key={index}>
