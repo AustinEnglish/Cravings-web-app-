@@ -71,16 +71,18 @@ var unirest = require('unirest');
   render() {
     return (
       <div id='item'>
+      <div>
         <div>
           {/* summary */}
           {/* map function for trending restaurant */}
           <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+
           {this.props.restData.map((restaurant, index) => {
             return (
               <div key={index}>
                 <button className="float-left" onClick={() => this.redirectToRestaurantJS(restaurant)}>
                   {restaurant.restaurant.name}
-               
+              
                   <p>&nbsp;</p>
                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
                   <div id="pokeBox" className="float-left" key={index}>
@@ -89,9 +91,11 @@ var unirest = require('unirest');
                 </button>
               </div>
             )
-          })} 
-
+          }
+            )
+          } 
         </div>
+      </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
