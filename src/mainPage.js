@@ -11,7 +11,13 @@ class MainPage extends Component {
      redirRestList: false,
     zip: '',
     city:'',
+
+    imageLoad: true,
+    
+
+
     imageExist:false,
+
 
     // restData:[], top ten restaurant array in obj
     // popularity:"", string
@@ -21,20 +27,26 @@ class MainPage extends Component {
 
 
 
-getImage =()=>{
+
+
+getImage =(data)=>{
+  
+  var array1 = [];
 
 var unirest = require('unirest');
-  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=Donald+Trump")
+  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=In-N-Out")
 .header("X-RapidAPI-Key", "bcff5a2730msh7171bbdceb80891p1c3400jsn1ec6cd130e75")
 .end(function (result) {
  console.log(result.body.value[0].url);
- 
-   return (result.body.value[0].url);
+
  
  
 });
 
 }
+
+
+
 
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
@@ -68,7 +80,7 @@ var unirest = require('unirest');
               <div key={index}>
                 <button className="float-left" onClick={() => this.redirectToRestaurantJS(restaurant)}>
                   {restaurant.restaurant.name}
-                  <img src={this.getImage()} height="100" width="100" />
+               
                   <p>&nbsp;</p>
                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
                   <div id="pokeBox" className="float-left" key={index}>
@@ -78,12 +90,6 @@ var unirest = require('unirest');
               </div>
             )
           })} 
-
-          {
-            this.state.redir && (
-              <Redirect to={`/restaurant/`} />
-            )
-          }
 
         </div>
         <p>&nbsp;</p>
@@ -106,6 +112,13 @@ var unirest = require('unirest');
           </div>
          
         </div>
+
+         {
+            this.state.redir && (
+              <Redirect to={`/restaurant/`} />
+            )
+          }
+          
       </div>
     );
   }
