@@ -23,6 +23,7 @@ class Restaurant extends Component {
   render() {
     return (
       <div id='item'>
+       
        <h1>Single Restaurant Data</h1>
        <table className="table table-bordered">
         <thead>
@@ -50,6 +51,8 @@ class Restaurant extends Component {
         </tbody>
        </table>
        <td><a href={this.props.singleRest.url} target="blank">Photos</a></td>
+       
+       
       </div>
     );
   }

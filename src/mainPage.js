@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 //main page that'll have all the data
 class MainPage extends Component {
   state = {
+    choice:"",
+    redir: false,
+    redirCuisines: false,
+     redirRestList: false,
+    zip: '',
+    city:''
 
-redir: false
 
     // restData:[], top ten restaurant array in obj
     // popularity:"", string
@@ -18,61 +23,80 @@ redir: false
 
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
-    this.setState({redir:true})
+    this.setState({ redir: true })
 
+
+
+  }
+
+  redirectFunc = () => {
+
+    if(this.state.choice === "restaurants"){
+      this.props.getLocationFromZip(this.state.zip,this.state.city);
+      this.setState({ redirRestList: true })
+
+    }
+    else if(this.state.choice === "cuisines"){
+      //call function
+      //set bool
+    }
     
-     
+   
   }
-  
-  redirectToRestaurantListJS = () => {
-    <Redirect to="/resturantList"/>
-  }
-  
+
 
   render() {
     return (
       <div id='item'>
-       <div>
-            {/* summary */}
-            {/* map function for trending restaurant */}
-            <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
-            {this.props.restData.map((restaurant, index) => {
-              return(
-                <div key={index}>
-                <button className="float-left"  onClick={()=>this.redirectToRestaurantJS(restaurant)}> 
-                   {restaurant.restaurant.name}
-                   <p>&nbsp;</p>
-                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
-                <div id="pokeBox" className="float-left" key={index}>
-                 
-                </div>
-                 </button>
-                </div>
-              )
-            })}
+        <div>
+          {/* summary */}
+          {/* map function for trending restaurant */}
+          <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+          {this.props.restData.map((restaurant, index) => {
+            return (
+              <div key={index}>
+                <button className="float-left" onClick={() => this.redirectToRestaurantJS(restaurant)}>
+                  {restaurant.restaurant.name}
+                  <p>&nbsp;</p>
+                  {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
+                  <div id="pokeBox" className="float-left" key={index}>
 
-            {
-              this.state.redir &&(
-                <Redirect to={`/restaurant/`}/>
-              )
-            }
+                  </div>
+                </button>
+              </div>
+            )
+          })}
+
+          {
+            this.state.redir && (
+              <Redirect to={`/restaurant/`} />
+            )
+          }
 
 
-          </div>
-           <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+
+
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div>
+          <h5>Find Restaurants</h5>
           <div>
-            <h5>Find Restaurants</h5>
-            <input type="text" placeholder="Search.."/>
-            <button type="button" className="btn btn-primary" onClick={this.redirectToRestaurantListJS()}>Submit</button>
-            <select className="custom-select-md">
-              <option>dropdown</option>
-              <option value="1">some</option>
-              <option value="2">text</option>
-              <option value="3">hello</option>
-            </select>
+
+          <select onChange={e => { this.setState({ choice: e.target.value }) } }>
+            <option value="">Choose one</option>
+            <option value="restaurants">top Restaurants</option>
+            <option value="cuisines" >Top Cuisines</option>
+          </select>
+          
+          <input type="text" placeholder="Search Zip..."  value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })}/>
+          
+          <input type="text" placeholder="Search City..."  value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}/>
+           <button type="button" className="btn btn-primary" onClick={this.redirectFunc}>Submit</button>
           </div>
+         
+        </div>
       </div>
     );
   }
