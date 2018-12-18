@@ -21,6 +21,7 @@ class Navbar extends Component {
               to='/'>Log Out&nbsp;&nbsp;&nbsp;
             </Link>
 
+
           </form>
         </nav>
          <div id="titlediv"><h1 >Restaruant Finder</h1></div>
