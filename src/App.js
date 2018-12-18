@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter,Redirect } from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
 import RestaurantList from './restaurantList';
 import axios from 'axios';
-import GoogleImageSearch from 'free-google-image-search'
+
 
 
 
@@ -30,27 +30,35 @@ var api;
 
 
 navigator.geolocation.getCurrentPosition((position) => {
-  api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-  this.getLocation(api);
+  api +=`lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+  this.getLocation(api, "irvine");
 });
 
   }
 
 
 
- getLocation=(position)=> {
+ getLocation=(position,city)=> {
   
-
 
       var config = {
         headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
       };
 
-      axios.get("https://developers.zomato.com/api/v2.1/locations?query=irvine&lat=" + position +"&count=4", config)
+      axios.get("https://developers.zomato.com/api/v2.1/locations?query="+city+"&lat=" + position +"&count=5", config)
 
+       
         .then(res => {
+          for(var i = 0; i< res.data.location_suggestions.length;i++){
+            if(res.data.location_suggestions[i].entity_type === "subzone"){
+              console.log(res.data.location_suggestions[i])
+              this.getFoodData(res.data.location_suggestions[i])
+              break;
 
-          this.getFoodData(res.data.location_suggestions[2])
+            }
+            
+          }
+          
 
         })
 
@@ -82,6 +90,17 @@ getFoodData = (data)=>{
 }
 
 
+getLocationFromZip = (zip,city) =>{
+
+this.setState({restData:[]})
+  alert(city);
+
+  axios.get('https://us1.locationiq.com/v1/search.php?key=772ec16a0f4f17&q=' + zip + '&format=json')
+      .then(response => {
+         this.getLocation(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`,city)
+         alert(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`)
+      })
+}
 
 
 callRestaurantPage = (rest)=>{
@@ -120,8 +139,9 @@ tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
         {
           this.state.restData && (
         <Switch>
-              <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage}/>} />
+              <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip}/>} />
                <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
+                
             )
           }
              

@@ -12,7 +12,10 @@ class RestaurantList extends Component {
     render() {
         return (
             <div id='item'>
+           
+                
                 <h1>Page2</h1>
+            
             </div>
 
         );
