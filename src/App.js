@@ -92,20 +92,6 @@ getFoodData = (data)=>{
 }
 
 
-getImage =()=>{
-var unirest = require('unirest');
-  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=Donald+Trump")
-.header("X-RapidAPI-Key", "bcff5a2730msh7171bbdceb80891p1c3400jsn1ec6cd130e75")
-.end(function (result) {
- console.log(result.body.value[0].url);
-});
-
-  
- 
-
-
-}
-
 
 
 getLocationFromZip = (zip,city) =>{
