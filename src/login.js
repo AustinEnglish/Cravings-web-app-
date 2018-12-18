@@ -17,12 +17,15 @@ class Login extends Component {
 
     componentDidMount = () => {
         
+         var validLogin = this.props.login("", "");
+        
     }
 
     render() { 
         { return this.state.validLogin ? <Redirect to="/mainPage" /> : 
         ( 
             <div>
+            <h1>Login</h1>
                 <form>
                     <div className="form-group">
                         <label>Username</label>

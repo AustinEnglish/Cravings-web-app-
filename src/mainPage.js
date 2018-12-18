@@ -27,7 +27,7 @@ class MainPage extends Component {
 
 
 
-getImage =()=>{
+
 
 getImage =(data)=>{
   
@@ -43,16 +43,10 @@ var unirest = require('unirest');
  
 });
 
-<<<<<<< HEAD
-
-
-  
- 
-
-
-=======
->>>>>>> 1837e6e23d5a2f427ab65d3eab1e0434bb5ce582
 }
+
+
+
 
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
@@ -97,12 +91,6 @@ var unirest = require('unirest');
             )
           })}
 
-          {
-            this.state.redir && (
-              <Redirect to={`/restaurant/`} />
-            )
-          }
-
         </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
@@ -124,6 +112,13 @@ var unirest = require('unirest');
           </div>
          
         </div>
+
+         {
+            this.state.redir && (
+              <Redirect to={`/restaurant/`} />
+            )
+          }
+          
       </div>
     );
   }
