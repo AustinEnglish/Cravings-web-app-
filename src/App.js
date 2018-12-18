@@ -152,8 +152,6 @@ tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
     return (
       <div className="mainContainer">
         <Navbar />
-        <script src="https://www.google.com/jsapi"></script>
-       
         {
           this.state.restData && (
         <Switch>

@@ -50,7 +50,7 @@ var unirest = require('unirest');
 
     }
     else if(this.state.choice === "cuisines"){
-      //call function
+      //call function 
       //set bool
     }
    
@@ -77,7 +77,7 @@ var unirest = require('unirest');
                 </button>
               </div>
             )
-          })}
+          })} 
 
           {
             this.state.redir && (
@@ -95,7 +95,7 @@ var unirest = require('unirest');
 
           <select onChange={e => { this.setState({ choice: e.target.value }) } }>
             <option value="">Choose one</option>
-            <option value="restaurants">top Restaurants</option>
+            <option value="restaurants">Top Restaurants</option>
             <option value="cuisines" >Top Cuisines</option>
           </select>
           

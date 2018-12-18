@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom'
+import Navbar from './navbar';
 
 class Login extends Component {
     state = { 
@@ -13,10 +14,6 @@ class Login extends Component {
         this.setState({
             validLogin: validLogin,
         })
-    }
-
-    componentDidMount = () => {
-        
     }
 
     render() { 
