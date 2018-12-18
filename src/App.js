@@ -3,6 +3,7 @@ import { Switch, Route} from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
 import Restaurant from './restaurant';
+import Login from './login';
 import RestaurantList from './restaurantList';
 import axios from 'axios';
 
@@ -19,10 +20,25 @@ class App extends Component {
     topFoods:[],
     singleRest:{},
 
+    users: [
+      {
+        username: '123',
+        password: '123'
+      }
+    ]
+
+
   }
 
 
-
+  login = (username, password) => {
+    for (var user of this.state.users){
+      if(user.username === username && user.password === password){
+        return true;
+      }
+    }
+    return false;
+  }
 
 componentDidMount() {
 
@@ -113,7 +129,7 @@ this.setState({restData:[]})
 callRestaurantPage = (rest)=>{
 var tempObj = {}
 tempObj.name = rest.restaurant.name
-tempObj.url = rest.restaurant.url
+tempObj.url = rest.restaurant.photos_url
 tempObj.user_rating_num = rest.restaurant.user_rating.aggregate_rating;
 tempObj.user_rating_text = rest.restaurant.user_rating.rating_text;
 tempObj.votes = rest.restaurant.user_rating.votes;
@@ -146,8 +162,9 @@ tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
         {
           this.state.restData && (
         <Switch>
-              <Route exact path='/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip}/>} />
-               <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
+              <Route exact path='/' render={(renderProps) => <Login login={this.login}/>} />
+              <Route path='/mainPage' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip}/>} />
+              <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest}/>} />
                 
             )
           }

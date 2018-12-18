@@ -14,8 +14,12 @@ class Navbar extends Component {
           <form className="form-inline">
 
             <Link className = "link"
-               to='/'>Main Page&nbsp;&nbsp;&nbsp;
-      </Link>
+               to='/mainPage'>Main Page&nbsp;&nbsp;&nbsp;
+            </Link>
+            
+            <Link className = "link"
+              to='/'>Log Out&nbsp;&nbsp;&nbsp;
+            </Link>
 
           </form>
         </nav>

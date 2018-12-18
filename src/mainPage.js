@@ -11,8 +11,12 @@ class MainPage extends Component {
      redirRestList: false,
     zip: '',
     city:'',
+
     imageLoad: true,
     
+
+
+    imageExist:false,
 
 
     // restData:[], top ten restaurant array in obj
@@ -23,6 +27,7 @@ class MainPage extends Component {
 
 
 
+getImage =()=>{
 
 getImage =(data)=>{
   
@@ -38,20 +43,20 @@ var unirest = require('unirest');
  
 });
 
+<<<<<<< HEAD
 
 
   
  
 
 
+=======
+>>>>>>> 1837e6e23d5a2f427ab65d3eab1e0434bb5ce582
 }
-
 
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
-
-
 
   }
 
@@ -66,10 +71,8 @@ var unirest = require('unirest');
       //call function
       //set bool
     }
-    
    
   }
-
 
   render() {
     return (
@@ -100,9 +103,6 @@ var unirest = require('unirest');
             )
           }
 
-
-
-
         </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
@@ -118,7 +118,7 @@ var unirest = require('unirest');
           </select>
           
           <input type="text" placeholder="Search Zip..."  value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })}/>
-          
+
           <input type="text" placeholder="Search City..."  value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}/>
            <button type="button" className="btn btn-primary" onClick={this.redirectFunc}>Submit</button>
           </div>
