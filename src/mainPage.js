@@ -11,8 +11,7 @@ class MainPage extends Component {
      redirRestList: false,
     zip: '',
     city:'',
-    imageExist:false
-
+    imageExist:false,
 
     // restData:[], top ten restaurant array in obj
     // popularity:"", string
@@ -21,8 +20,8 @@ class MainPage extends Component {
   }
 
 
-getImage =()=>{
 
+getImage =()=>{
 
 var unirest = require('unirest');
   unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=Donald+Trump")
@@ -35,18 +34,11 @@ var unirest = require('unirest');
  
 });
 
-  
- 
-
-
 }
-
 
   redirectToRestaurantJS = (restaurant) => {
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
-
-
 
   }
 
@@ -61,10 +53,8 @@ var unirest = require('unirest');
       //call function
       //set bool
     }
-    
    
   }
-
 
   render() {
     return (
@@ -95,9 +85,6 @@ var unirest = require('unirest');
             )
           }
 
-
-
-
         </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
@@ -113,7 +100,7 @@ var unirest = require('unirest');
           </select>
           
           <input type="text" placeholder="Search Zip..."  value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })}/>
-          
+
           <input type="text" placeholder="Search City..."  value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}/>
            <button type="button" className="btn btn-primary" onClick={this.redirectFunc}>Submit</button>
           </div>
