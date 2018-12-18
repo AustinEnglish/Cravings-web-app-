@@ -6,7 +6,8 @@ import Restaurant from './restaurant';
 import RestaurantList from './restaurantList';
 import axios from 'axios';
 
-
+const AUSTIN_API_KEY = '87af5db782fc51d23b90ba56c78073f9';
+const ALLAN_API_KEY = 'cbd42604489219b47685ac90dd2b19ce';
 
 
 class App extends Component {
@@ -41,8 +42,9 @@ navigator.geolocation.getCurrentPosition((position) => {
  getLocation=(position,city)=> {
   
 
+
       var config = {
-        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+        headers: { "user-key": ALLAN_API_KEY }
       };
 
       axios.get("https://developers.zomato.com/api/v2.1/locations?query="+city+"&lat=" + position +"&count=5", config)
@@ -71,7 +73,7 @@ getFoodData = (data)=>{
   this.setState({cityName: data.title})
 
   var config = {
-        headers: { "user-key": '87af5db782fc51d23b90ba56c78073f9' }
+        headers: { "user-key": ALLAN_API_KEY }
       };
 
       axios.get("https://developers.zomato.com/api/v2.1/location_details?entity_id="+data.entity_id+"&entity_type=subzone",config)
@@ -88,6 +90,22 @@ getFoodData = (data)=>{
         })
 
 }
+
+
+getImage =()=>{
+var unirest = require('unirest');
+  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=Donald+Trump")
+.header("X-RapidAPI-Key", "bcff5a2730msh7171bbdceb80891p1c3400jsn1ec6cd130e75")
+.end(function (result) {
+ console.log(result.body.value[0].url);
+});
+
+  
+ 
+
+
+}
+
 
 
 getLocationFromZip = (zip,city) =>{
