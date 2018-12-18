@@ -15,7 +15,6 @@ class App extends Component {
     popularity:"",
     cityName:"",
     topFoods:[],
-
     singleRest:{}
 
   }
@@ -82,10 +81,12 @@ getFoodData = (data)=>{
 }
 
 
+
+
 callRestaurantPage = (rest)=>{
 var tempObj = {}
 tempObj.name = rest.restaurant.name
-tempObj.url = rest.restaurant.url
+tempObj.url = rest.restaurant.photos_url
 tempObj.user_rating_num = rest.restaurant.user_rating.aggregate_rating;
 tempObj.user_rating_text = rest.restaurant.user_rating.rating_text;
 tempObj.votes = rest.restaurant.user_rating.votes;
@@ -113,6 +114,7 @@ tempObj.average_cost_for_two = rest.restaurant.average_cost_for_two
     return (
       <div className="mainContainer">
         <Navbar />
+        <script src="https://www.google.com/jsapi"></script>
        
         {
           this.state.restData && (

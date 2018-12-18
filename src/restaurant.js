@@ -10,11 +10,13 @@ class Restaurant extends Component {
   }
 
   addDollar = (dollarSign) => {
-    var newStr = " ";
-    while(0 <= (dollarSign) ){
+  
+    var newStr = '';
+    while(dollarSign >0 ){
       newStr += "$"
-      dollarSign -- ;
+      dollarSign --;
     }
+    console.log(newStr)
     return newStr;
   }
 
