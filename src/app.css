@@ -173,4 +173,11 @@ p {
 }
 .single-rest-div{
     font-family: 'Cardo', serif;
+    /* color: white; */
+}
+.table-header-background {
+    background-color: rgba(63, 63, 212, 0.226);
+}
+.table-body-background {
+    background-color: rgba(113, 113, 230, 0.178);
 }

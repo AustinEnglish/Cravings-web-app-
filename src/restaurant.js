@@ -26,16 +26,17 @@ class Restaurant extends Component {
         <h1>Single Restaurant Data</h1>
         <table className="table table-bordered">
           <thead>
-            <tr>
-              <th><h1>Name</h1></th>
-              <th><h1>Address</h1></th>
-              <th><h1>Cuisine Types</h1></th>
-              <th><h1>Price Range</h1></th>
-              <th><h1>Raiting</h1></th>
+            <tr className="table-header-background">
+                <th><h1>Name</h1></th>
+                <th><h1>Address</h1></th>
+                <th><h1>Cuisine Types</h1></th>
+                <th><h1>Price Range</h1></th>
+                <th><h1>Raiting</h1></th>
+              
             </tr>
           </thead>
-          <tbody>
-            <th><h2>{this.props.singleRest.name}</h2></th>
+          <tbody className="table-body-background">
+            <td><h2>{this.props.singleRest.name}</h2></td>
               <td><h3>{this.props.singleRest.address}</h3></td>
               <td><h3>{this.props.singleRest.cuisines}</h3></td>
               <td>
