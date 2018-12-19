@@ -20,7 +20,10 @@ class Cuisines extends Component {
               <div key={index}>
                 
                   {cuisine}
-               
+                  {cuisine.num_restaurant}
+                  {cuisine.popularity}
+                  {cuisine.nightlife_res}
+                  {cuisine.nightlife_index}
                   <p>&nbsp;</p>
                   {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
                   <div id="pokeBox" className="float-left" key={index}>
