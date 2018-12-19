@@ -162,28 +162,3 @@
     padding: 1%;
     margin: 1%;
 }
-
-.background-div {
-
-    background-image: url('https://www.desktop-background.com/download/1280x1024/2011/01/24/146988_healthy-food-hd-images-desktop-wallpapers-hd-wallpapers_1301x1300_h.jpg');
-    background-size: cover;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'Luckiest Guy', cursive;
-}
- .username-div {
-     margin: 120px 180px;
- }
- .password-div {
-     margin: 220px -500px;
- }
- .login-btn {
-     margin: 20px 443px;
- }
- p {
-     font-size: 200%;
-     margin: 50px 200px;
- }
-.h1-tag {
-    margin: 30px 50px;
-}

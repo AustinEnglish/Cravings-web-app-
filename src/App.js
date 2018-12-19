@@ -7,6 +7,8 @@ import Restaurant from './restaurant';
 import Cuisines from './cuisines';
 import Login from './login';
 import axios from 'axios';
+import './App.css';
+import loadingGif from './images/loading.gif'
 
 const AUSTIN_API_KEY = '87af5db782fc51d23b90ba56c78073f9';
 const ALLAN_API_KEY = 'cbd42604489219b47685ac90dd2b19ce';
@@ -21,6 +23,7 @@ class App extends Component {
     topFoods: [],
     singleRest: {},
     loggedIn: false,
+    loading: false,
 
     users: [
       {
@@ -53,6 +56,8 @@ class App extends Component {
 
   componentDidMount1 = () => {
 
+this.setState({loading:true})
+
     var api;
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -69,7 +74,6 @@ class App extends Component {
 
 
   getLocation = (position, city) => {
-
 
 
     var config = {
@@ -101,6 +105,7 @@ class App extends Component {
 
   getFoodData = (data) => {
 
+
     this.setState({ cityName: data.title })
 
     var config = {
@@ -120,12 +125,16 @@ class App extends Component {
 
       })
 
+      this.setState({loading:false})
+
   }
 
 
 
 
   getLocationFromZip = (zip, city) => {
+
+    this.setState({loading:true})
 
     this.setState({ restData: [] })
     alert(city);
@@ -166,7 +175,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="mainContainer">
+      <div id="mainContainer">
   
         {
           this.state.loggedIn && (
@@ -176,8 +185,22 @@ class App extends Component {
         }
 
         {
-          this.state.restData && (
+          this.state.loading && (
             <div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+           <div id="loadingIcon"><img  src={loadingGif} alt='' /></div>
+           </div>
+          )
+
+        }
+
+        {
+          this.state.restData && (
+            <div id="componentContainer">
               <Switch>
                 <Route exact path='/' render={(renderProps) => <Login login={this.login} />} />
                 <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} />} />

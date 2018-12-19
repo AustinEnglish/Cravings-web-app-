@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import burger from './images/burger.jpg'
+import rest from './images/rest.jpg'
+import cafe from './images/cafe.jpg'
+import loadingGif from './images/loading.gif'
 
 
 //main page that'll have all the data
 class MainPage extends Component {
   state = {
-    choice:"",
+    choice: "",
     redir: false,
     redirCuisines: false,
     zip: '',
-    city:'',
+    city: '',
 
     imageLoad: true,
-    
 
 
-    imageExist:false,
+
+    imageExist: false,
 
 
     // restData:[], top ten restaurant array in obj
@@ -27,22 +31,21 @@ class MainPage extends Component {
 
 
 
+  getImage = (name) => {
+    if (name.toLowerCase().includes("burger")) {
 
-getImage =(data)=>{
-  
-  var array1 = [];
+      return (burger)
+    }
+    else if (name.toLowerCase().includes("cafe")) {
 
-var unirest = require('unirest');
-  unirest.get("https://cors-anywhere.herokuapp.com/https://contextualwebsearch-search-image-v1.p.rapidapi.com/api/Search/ImageSearchAPI?autocorrect=true&count=1&q=In-N-Out")
-.header("X-RapidAPI-Key", "bcff5a2730msh7171bbdceb80891p1c3400jsn1ec6cd130e75")
-.end(function (result) {
- console.log(result.body.value[0].url);
+      return (cafe)
+    }
+    else {
+      return (rest)
 
- 
- 
-});
+    }
 
-}
+  }
 
 
 
@@ -55,78 +58,84 @@ var unirest = require('unirest');
 
   redirectFunc = () => {
 
-    if(this.state.choice === "restaurants"){
-      this.props.getLocationFromZip(this.state.zip,this.state.city);
-     
+    if (this.state.choice === "restaurants") {
+      this.props.getLocationFromZip(this.state.zip, this.state.city);
+
 
     }
-    else if(this.state.choice === "cuisines"){
-    this.props.getLocationFromZip(this.state.zip,this.state.city);
-       this.setState({ redirCuisines: true })
+    else if (this.state.choice === "cuisines") {
+      this.props.getLocationFromZip(this.state.zip, this.state.city);
+      this.setState({ redirCuisines: true })
     }
-   
+
   }
 
   render() {
     return (
-      <div id='item'>
       <div>
+      <div id='mainpage'>
+        <p>&nbsp;</p>
         <div>
           {/* summary */}
           {/* map function for trending restaurant */}
-          <h1>Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+          <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
 
-          {this.props.restData.map((restaurant, index) => {
-            return (
-              <div key={index}>
-                <button className="float-left" onClick={() => this.redirectToRestaurantJS(restaurant)}>
-                  {restaurant.restaurant.name}
-              
-                  <p>&nbsp;</p>
-                  {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
-                  <div id="pokeBox" className="float-left" key={index}>
+          <div id="images">
+            {this.props.restData.map((restaurant, index) => {
+              return (
+                <div id="image" className="float-right" key={index}>
+                  <button id="imageButton" onClick={() => this.redirectToRestaurantJS(restaurant)}>
+                    <p>&nbsp;</p>
+                    <div id="restText"><b>{restaurant.restaurant.name}</b></div>
+                    <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} height="100" width="100" />
 
-                  </div>
-                </button>
-              </div>
-            )
-          }
-            )
-          } 
+                    <p>&nbsp;</p>
+                    {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
+                    <div id="pokeBox" className="float-left" key={index}>
+
+                    </div>
+                  </button>
+                </div>
+              )
+            })}
+          </div>
+
         </div>
       </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <div>
+        <div id="search">
           <h5>Find Restaurants</h5>
-          <div>
+          <div id="searchFields">
+           <p>&nbsp;</p>
+  
+            <input className ="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
+           
 
-          <select onChange={e => { this.setState({ choice: e.target.value }) } }>
-            <option value="">Choose one</option>
-            <option value="restaurants">Top Restaurants</option>
-            <option value="cuisines" >Top Cuisines</option>
-          </select>
-          
-          <input type="text" placeholder="Search Zip..."  value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })}/>
+            <input className ="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
 
-          <input type="text" placeholder="Search City..."  value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })}/>
-           <button type="button" className="btn btn-primary" onClick={this.redirectFunc}>Submit</button>
+            <select className ="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
+              <option value="">Choose one</option>
+              <option value="restaurants">top Restaurants</option>
+              <option value="cuisines" >Top Cuisines</option>
+            </select>
+            <button type="button" className="btn btn-primary searchInfo" onClick={this.redirectFunc}>Submit</button>
           </div>
-         
+
         </div>
 
-         {
-            this.state.redir && (
-              <Redirect to={`/restaurant/`} />
-            )
-          }
 
-          {
-            this.state.redirCuisines && (
-              <Redirect to={`/cuisines/`} />
-            )
-          }
+        {
+          this.state.redir && (
+            <Redirect to={`/restaurant/`} />
+          )
+        }
+
+        {
+          this.state.redirCuisines && (
+            <Redirect to={`/cuisines/`} />
+          )
+        }
 
       </div>
     );
