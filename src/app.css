@@ -1,5 +1,4 @@
 
-
 #mainContainer {
     background-color: lightblue;
     margin: 0;
@@ -10,15 +9,15 @@
 
 #loadingIcon {
     text-align: center;
-    height: 100%;
-    min-height: 100vh;
 }
 
-#navContainer {
-    border: solid darkblue;
+#navContainer{
+    border: solid #6593f5;
     width: fill;
-    height: 50%;
-    background: navy;
+    height: 70px;
+    background: #6593f5;
+    font-family: 'Tenor Sans', sans-serif;
+
 }
 
 .link {
@@ -28,7 +27,7 @@
 #componentContainer {
     margin: 0;
     height: 100%;
-    padding: 5% 4% 2% 2%;
+    padding: 3% 4% 2% 2%;
     min-height: 100vh;
     background-image: linear-gradient(lightblue, steelblue);
 }
@@ -147,7 +146,7 @@
     background-size: cover;
     height: 100vh;
     overflow: hidden;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Tenor Sans', sans-serif;
 }
 
 .username-div {
@@ -155,18 +154,21 @@
 }
 
 .password-div {
-    margin: 220px -500px;
+    margin: 220px -455px;
 }
 
 .login-btn {
-    margin: 20px 443px;
+    margin: 20px 390px;
 }
 
 p {
     font-size: 200%;
-    margin: 50px 200px;
+    margin: 80px 250px;
 }
 
 .h1-tag {
     margin: 30px 50px;
+}
+.single-rest-div{
+    font-family: 'Cardo', serif;
 }

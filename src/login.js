@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom'
-import Navbar from './navbar';
 
 class Login extends Component {
     state = { 
@@ -37,7 +36,7 @@ class Login extends Component {
     render() { 
         { return this.state.validLogin ? <Redirect to="/mainPage" /> : 
         ( 
-            <div class="background-div">
+            <div className="background-div">
                 <div className="h1-tag">
                     <h1>Cravings</h1>
                 </div>

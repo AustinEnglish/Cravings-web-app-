@@ -6,7 +6,7 @@ import Restaurant from './restaurant';
 import Cuisines from './cuisines';
 import Login from './login';
 import axios from 'axios';
-import './App.css';
+import './app.css';
 import loadingGif from './images/loading.gif'
 
 const AUSTIN_API_KEY = '87af5db782fc51d23b90ba56c78073f9';
@@ -22,7 +22,6 @@ class App extends Component {
     topFoods: [],
     singleRest: {},
     loggedIn: false,
-    loading: false,
     numRest: "",
     nightLifeIndex: "",
 
@@ -57,7 +56,6 @@ class App extends Component {
 
   componentDidMount1 = () => {
 
-this.setState({loading:true})
 
     var api;
 
@@ -122,13 +120,11 @@ this.setState({loading:true})
           restData: res.data.best_rated_restaurant,
           popularity: res.data.popularity,
           topFoods: res.data.top_cuisines,
-          numRest: res.data.popularity.num_restaurant,
+          numRest: res.data.num_restaurant,
           nightLifeIndex: res.data.nightlife_index
         }, () => console.log(this.state.topFoods))
 
       })
-
-      this.setState({loading:false})
 
   }
 
@@ -136,8 +132,6 @@ this.setState({loading:true})
 
 
   getLocationFromZip = (zip, city) => {
-
-    this.setState({loading:true})
 
     this.setState({ restData: [] })
 
@@ -185,16 +179,7 @@ this.setState({loading:true})
 
         }
 
-        {
-          this.state.loading && (
-            <div id="mainContainer">
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-           <div id="loadingIcon"><img  src={loadingGif} alt='' /></div>
-           </div>
-          )
-
-        }
+    
 
         {
           this.state.restData && (
