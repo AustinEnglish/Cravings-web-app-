@@ -178,7 +178,7 @@ this.setState({loading:true})
 
   render() {
     return (
-      <div id="mainContainer">
+      <div>
   
         {
           this.state.loggedIn && (
@@ -189,7 +189,7 @@ this.setState({loading:true})
 
         {
           this.state.loading && (
-            <div>
+            <div id="mainContainer">
             <p>&nbsp;</p>
             <p>&nbsp;</p>
            <div id="loadingIcon"><img  src={loadingGif} alt='' /></div>
@@ -200,12 +200,14 @@ this.setState({loading:true})
 
         {
           this.state.restData && (
-            <div id="componentContainer">
+            <div>
               <Switch>
                 <Route exact path='/' render={(renderProps) => <Login login={this.login} />} />
+                <div id="componentContainer">
                 <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} />} />
                 <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest} />} />
                 <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} popularity={this.state.popularity} numRest={this.state.numRest} numRest={this.state.numRest} nightLifeIndex={this.state.nightLifeIndex}/>} />
+                </div>
               </Switch>
             </div>
 

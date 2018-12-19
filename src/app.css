@@ -1,13 +1,7 @@
-#root {
-    background-color: white;
-    margin: 0;
-    height: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(lightblue, steelblue);
-}
+
 
 #mainContainer {
-    background-color: white;
+    background-color: lightblue;
     margin: 0;
     height: 100%;
     min-height: 100vh;
