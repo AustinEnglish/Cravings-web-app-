@@ -87,7 +87,7 @@ var imageUrl = '';
       <div>
       <p>{this.getImage2()}</p>
         <div id='mainpage'>
-          <div >
+          <div className="single-rest-div">
            
             <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
 
@@ -100,11 +100,9 @@ var imageUrl = '';
                     <button id="imageButton" onClick={() => this.redirectToRestaurantJS(restaurant)}>
                       <div id="paddingBox">
                         <div id="restText"><b>{restaurant.restaurant.name}</b></div>
-                        <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} />
+                        <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} alt=""/>
                       </div>
-                      <div id="pokeBox" className="float-left" key={index}>
-
-                      </div>
+                      
                     </button>
                   </div>
                 )
@@ -113,7 +111,7 @@ var imageUrl = '';
 
           </div>
         </div>
-         <p>&nbsp;</p>
+
         <div id="search">
           <h5>Find Restaurants</h5>
           <div id="searchFields">

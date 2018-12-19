@@ -6,7 +6,7 @@ import Restaurant from './restaurant';
 import Cuisines from './cuisines';
 import Login from './login';
 import axios from 'axios';
-import './app.css';
+import './App.css';
 import loadingGif from './images/loading.gif'
 
 const AUSTIN_API_KEY = '87af5db782fc51d23b90ba56c78073f9';
