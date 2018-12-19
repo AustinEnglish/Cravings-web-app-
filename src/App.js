@@ -140,12 +140,10 @@ this.setState({loading:true})
     this.setState({loading:true})
 
     this.setState({ restData: [] })
-    alert(city);
 
     axios.get('https://us1.locationiq.com/v1/search.php?key=772ec16a0f4f17&q=' + zip + '&format=json')
       .then(response => {
         this.getLocation(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`, city)
-        alert(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`)
       })
   }
 

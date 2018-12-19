@@ -18,7 +18,6 @@ class Login extends Component {
     }
 
     componentDidMount1 = () => {
-        alert("here");
          var validLogin = this.props.login("", "");
         
     }

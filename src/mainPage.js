@@ -15,9 +15,8 @@ class MainPage extends Component {
     redirCuisines: false,
     zip: '',
     city: '',
+    images: []
 
-    imageLoad: true,
-    imageExist: false,
 
 
     // restData:[], top ten restaurant array in obj
@@ -26,43 +25,45 @@ class MainPage extends Component {
     // topFoods:[] 
   }
 
+  
 
-  getImage2 = () =>{
+  getImage2 = (name, index) => {
 
-var imageUrl = '';
-    GoogleImageSearch.searchImage('dog')
-            .then((response) => { 
-                imageUrl: response[0]
-                console.log(response[0])
-            })
 
-     var url = GoogleImageSearch.searchImage("dog");
-     console.log(url);
+    GoogleImageSearch.searchImage(name)
+      .then((response) => {
+        this.setState({ images: [...this.state.images,  index+response[0]] })
+        console.log(index+response[0])
+      })
+
+      
+  }
+
+  organize = (index) => {
+
+    for(var i = 0; i<this.state.images.length;i++){
+
+        if(this.state.images[i][0] == index){
+
+          console.log(this.state.images[i].substr(1))
+          return this.state.images[i].substr(1);
+
+        }
+    }
+
+
   }
 
 
+  componentDidMount() {
 
-
-  getImage = (name) => {
-    if (name.toLowerCase().includes("burger")) {
-
-      return (burger)
-    }
-    else if (name.toLowerCase().includes("cafe")) {
-
-      return (cafe)
-    }
-    else {
-      return (rest)
-
-    }
-
+    this.state.images = [];
   }
-
 
 
 
   redirectToRestaurantJS = (restaurant) => {
+    this.state.images = [];
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
 
@@ -70,6 +71,7 @@ var imageUrl = '';
 
   redirectFunc = () => {
 
+    this.state.images = [];
     if (this.state.choice === "restaurants") {
       this.props.getLocationFromZip(this.state.zip, this.state.city);
 
@@ -85,35 +87,49 @@ var imageUrl = '';
   render() {
     return (
       <div>
-      <p>{this.getImage2()}</p>
-        <div id='mainpage'>
-          <div >
-           
-            <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+        {this.state.images.length === 0 && (
+          this.props.restData.map((name, index) => {
+            return (
+              <div id="element" key={index}>
+                {this.getImage2(name.restaurant.name, index)}
 
-       
+              </div>
+
+            )
+          })
+        )}
+
+        {this.state.images.length == 10 && (
+
+          <div id='mainpage'>
+
+
+            <div >
+
+              <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+
+
+
               {this.props.restData.map((restaurant, index) => {
-                
+
                 return (
-                  
-                  <div id="image" className="float-right" key={index}>
+
+                  <div id="image" className="float-left" key={index}>
                     <button id="imageButton" onClick={() => this.redirectToRestaurantJS(restaurant)}>
                       <div id="paddingBox">
                         <div id="restText"><b>{restaurant.restaurant.name}</b></div>
-                        <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} />
-                      </div>
-                      <div id="pokeBox" className="float-left" key={index}>
-
+                        <img id="backgroundImage" src={this.organize(index)} />
                       </div>
                     </button>
                   </div>
                 )
               })}
-            
 
+
+            </div>
           </div>
-        </div>
-         <p>&nbsp;</p>
+        )}
+        <p>&nbsp;</p>
         <div id="search">
           <h5>Find Restaurants</h5>
           <div id="searchFields">
