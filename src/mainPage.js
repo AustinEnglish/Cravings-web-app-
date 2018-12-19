@@ -87,7 +87,7 @@ var imageUrl = '';
       <div>
       <p>{this.getImage2()}</p>
         <div id='mainpage'>
-          <div className="single-rest-div">
+          <div>
            
             <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
 
