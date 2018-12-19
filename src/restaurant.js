@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './App.css'
 
 
 //single Restaurant page
@@ -23,35 +23,35 @@ class Restaurant extends Component {
   render() {
     return (
       <div id='item'>
-       
+       <div className="single-rest-div">
        <h1>Single Restaurant Data</h1>
-       <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Cuisine Types</th>
-            <th>Price Range</th>
-            <th>Raiting</th>
-          </tr>
-        </thead>
-        <tbody>
-          <th><h3>{this.props.singleRest.name}</h3></th>
-            <td><h5>{this.props.singleRest.address}</h5></td>
-            <td><h4>{this.props.singleRest.cuisines}</h4></td>
-            <td>
-              <h6>{this.addDollar(this.state.dollarSign)}</h6>
-              <h6>Average For two ${this.props.singleRest.average_cost_for_two}</h6>
-            </td>
-            <td>
-              <h6>{this.props.singleRest.user_rating_num}/5.0</h6>
-              <h6>{this.props.singleRest.user_rating_text}</h6>
-              <h6>Votes: {this.props.singleRest.votes}</h6>
-            </td>
-        </tbody>
-       </table>
-       <td><a href={this.props.singleRest.url} target="blank">Photos</a></td>
-       
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th><h1>Name</h1></th>
+              <th><h1>Address</h1></th>
+              <th><h1>Cuisine Types</h1></th>
+              <th><h1>Price Range</h1></th>
+              <th><h1>Raiting</h1></th>
+            </tr>
+          </thead>
+          <tbody>
+            <th><h2>{this.props.singleRest.name}</h2></th>
+              <td><h3>{this.props.singleRest.address}</h3></td>
+              <td><h3>{this.props.singleRest.cuisines}</h3></td>
+              <td>
+                <h4>{this.addDollar(this.state.dollarSign)}</h4>
+                <h4>Average For two ${this.props.singleRest.average_cost_for_two}</h4>
+              </td>
+              <td>
+                <h4>{this.props.singleRest.user_rating_num}/5.0</h4>
+                <h4>{this.props.singleRest.user_rating_text}</h4>
+                <h4>Votes: {this.props.singleRest.votes}</h4>
+              </td>
+          </tbody>
+        </table>
+        <td><h5><a href={this.props.singleRest.url} target="blank">Photos</a></h5></td>
+      </div>
        
       </div>
     );

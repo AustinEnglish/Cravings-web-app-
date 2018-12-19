@@ -26,10 +26,12 @@
 }
 
 #navContainer{
-    border: solid darkblue;
+    border: solid #6593f5;
     width: fill;
     height: 70px;
-    background: navy
+    background: #6593f5;
+    font-family: 'Tenor Sans', sans-serif;
+
 }
 
 .link{
@@ -169,21 +171,24 @@
     background-size: cover;
     height: 100vh;
     overflow: hidden;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Tenor Sans', sans-serif;
 }
  .username-div {
-     margin: 120px 180px;
+     margin: 70px 180px;
  }
  .password-div {
-     margin: 220px -500px;
+     margin: 180px -455px;
  }
  .login-btn {
-     margin: 20px 443px;
+     margin: 15px 390px;
  }
  p {
      font-size: 200%;
-     margin: 50px 200px;
+     margin: 130px 300px;
  }
 .h1-tag {
     margin: 30px 50px;
+}
+.single-rest-div{
+    font-family: 'Cardo', serif;
 }
