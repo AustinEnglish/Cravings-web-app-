@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './app.css';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './navbar';
 import MainPage from './mainPage';
@@ -24,6 +23,8 @@ class App extends Component {
     singleRest: {},
     loggedIn: false,
     loading: false,
+    numRest: "",
+    nightLifeIndex: "",
 
     users: [
       {
@@ -120,7 +121,9 @@ this.setState({loading:true})
           cityName: data.title,
           restData: res.data.best_rated_restaurant,
           popularity: res.data.popularity,
-          topFoods: res.data.top_cuisines
+          topFoods: res.data.top_cuisines,
+          numRest: res.data.popularity.num_restaurant,
+          nightLifeIndex: res.data.nightlife_index
         }, () => console.log(this.state.topFoods))
 
       })
@@ -189,9 +192,6 @@ this.setState({loading:true})
             <div>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
            <div id="loadingIcon"><img  src={loadingGif} alt='' /></div>
            </div>
           )
@@ -205,7 +205,7 @@ this.setState({loading:true})
                 <Route exact path='/' render={(renderProps) => <Login login={this.login} />} />
                 <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} />} />
                 <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest} />} />
-                <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} />} />
+                <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} popularity={this.state.popularity} numRest={this.state.numRest} numRest={this.state.numRest} nightLifeIndex={this.state.nightLifeIndex}/>} />
               </Switch>
             </div>
 

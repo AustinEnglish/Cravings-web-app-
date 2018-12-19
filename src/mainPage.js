@@ -73,48 +73,44 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-      <div id='mainpage'>
-        <p>&nbsp;</p>
-        <div>
-          {/* summary */}
-          {/* map function for trending restaurant */}
-          <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
+        <div id='mainpage'>
+          <div >
+           
+            <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
 
-          <div id="images">
-            {this.props.restData.map((restaurant, index) => {
-              return (
-                <div id="image" className="float-right" key={index}>
-                  <button id="imageButton" onClick={() => this.redirectToRestaurantJS(restaurant)}>
-                    <p>&nbsp;</p>
-                    <div id="restText"><b>{restaurant.restaurant.name}</b></div>
-                    <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} height="100" width="100" />
+       
+              {this.props.restData.map((restaurant, index) => {
+                
+                return (
+                  
+                  <div id="image" className="float-right" key={index}>
+                    <button id="imageButton" onClick={() => this.redirectToRestaurantJS(restaurant)}>
+                      <div id="paddingBox">
+                        <div id="restText"><b>{restaurant.restaurant.name}</b></div>
+                        <img id="backgroundImage" src={this.getImage(restaurant.restaurant.name)} />
+                      </div>
+                      <div id="pokeBox" className="float-left" key={index}>
 
-                    <p>&nbsp;</p>
-                    {/* <a href={restaurant.restaurant.photos_url} target="_blank">Menu</a> */}
-                    <div id="pokeBox" className="float-left" key={index}>
+                      </div>
+                    </button>
+                  </div>
+                )
+              })}
+            
 
-                    </div>
-                  </button>
-                </div>
-              )
-            })}
           </div>
-
         </div>
-      </div>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+         <p>&nbsp;</p>
         <div id="search">
           <h5>Find Restaurants</h5>
           <div id="searchFields">
-           <p>&nbsp;</p>
-  
-            <input className ="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
-           
 
-            <input className ="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
+            <input className="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
 
-            <select className ="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
+
+            <input className="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
+
+            <select className="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
               <option value="">Choose one</option>
               <option value="restaurants">top Restaurants</option>
               <option value="cuisines" >Top Cuisines</option>
