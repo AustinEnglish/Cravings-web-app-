@@ -4,6 +4,7 @@ import burger from './images/burger.jpg'
 import rest from './images/rest.jpg'
 import cafe from './images/cafe.jpg'
 import loadingGif from './images/loading.gif'
+import GoogleImageSearch from './googlesearch';
 
 
 //main page that'll have all the data
@@ -16,9 +17,6 @@ class MainPage extends Component {
     city: '',
 
     imageLoad: true,
-
-
-
     imageExist: false,
 
 
@@ -26,6 +24,20 @@ class MainPage extends Component {
     // popularity:"", string
     // cityName:"", string
     // topFoods:[] 
+  }
+
+
+  getImage2 = () =>{
+
+var imageUrl = '';
+    GoogleImageSearch.searchImage('dog')
+            .then((response) => { 
+                imageUrl: response[0]
+                console.log(response[0])
+            })
+
+     var url = GoogleImageSearch.searchImage("dog");
+     console.log(url);
   }
 
 
@@ -73,6 +85,7 @@ class MainPage extends Component {
   render() {
     return (
       <div>
+      <p>{this.getImage2()}</p>
         <div id='mainpage'>
           <div >
            
