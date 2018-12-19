@@ -23,7 +23,7 @@ class Restaurant extends Component {
     return (
       <div id='item'>
        <div className="single-rest-div">
-       <h1>Single Restaurant Data</h1>
+        <h1>Single Restaurant Data</h1>
         <table className="table table-bordered">
           <thead>
             <tr>
