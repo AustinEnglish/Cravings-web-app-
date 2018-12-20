@@ -123,7 +123,7 @@ var imageUrl = '';
 
             <select className="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
               <option value="">Choose one</option>
-              <option value="restaurants">top Restaurants</option>
+              <option value="restaurants">Top Restaurants</option>
               <option value="cuisines" >Top Cuisines</option>
             </select>
             <button type="button" className="btn btn-primary searchInfo" onClick={this.redirectFunc}>Submit</button>
