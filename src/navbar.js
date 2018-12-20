@@ -24,7 +24,7 @@ class Navbar extends Component {
 
           </form>
         </nav>
-         <h1 className = "link" >Cravings</h1>
+         <h1 className = "link nav-title" >Cravings</h1>
       </div>
     );
   }

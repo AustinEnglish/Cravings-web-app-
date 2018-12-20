@@ -186,22 +186,51 @@
 }
 
 .login-btn {
-    margin: 20px 382px;
+    margin: 20px 395px;
     cursor: url('images/fork2.png'), pointer;
-    background-color: #007bff;
+    color: #fff;
+    background-color: #337ab7;
     border-color: #2e6da4;
-    color: white;
-    border-radius: 4px;
-    padding: 5px 15px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 4px;
 
 }
 .login-btn:hover{
- background-color: #286090 ;
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
 }
-
+.mainPage-btn{
+    cursor: url('images/fork2.png'), pointer;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.mainPage-btn:hover{
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
 
 p {
     font-size: 200%;
@@ -241,7 +270,7 @@ p {
     background-color: rgba(113, 113, 230, 0.178);
 }
 
-body, html, #root, form, input, select, option, button{
+body, html, #root, form, input, select, option, button, link{
     cursor: url('images/fork2.png'), pointer;
 }
 
@@ -263,4 +292,7 @@ body, html, #root, form, input, select, option, button{
 .restTable{
      box-shadow: 10px 10px;
     
+}
+.nav-title{
+    font-size: 70px;
 }
