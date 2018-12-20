@@ -58,8 +58,8 @@ class App extends Component {
 
 
     var foursquare = require('react-foursquare')({
-      clientID: 'IGNGESR0JJP23AWVCGP5PZ2DML2XRL24BIVYAYAE02M4NJXZ',
-      clientSecret: 'GGSXKNDSERAIUUWZLMUKWL14MZ2BTITXX2MTVXS1AA5VIJZQ'
+      clientID: 'GH4BWS2A1V0K0RAIGWA401NNQ04JUIF55HUTP30LQ1IKINUL',
+      clientSecret: 'NRTY31TIGPDGK5GWODTMDKTQL1JTW1VKLWHWZJR425E03WSN'
     });
 
     var api;
@@ -72,14 +72,42 @@ class App extends Component {
 
       foursquare.venues.getVenues(params)
         .then(res => {
-
+          console.log(res.response.venues)
           api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-          this.getLocation(api, res.response.venues[0].location.city);
+          console.log(res.response.venues[0].location.postalCode);
+          this.getLocationFromZip1(res.response.venues[0].location.postalCode)
+          //this.getLocation(api, "laguna niguel");
         });
 
 
     });
 
+  }
+
+
+  getLocationFromZip1 = (zip) => {
+
+    var foursquare = require('react-foursquare')({
+      clientID: 'GH4BWS2A1V0K0RAIGWA401NNQ04JUIF55HUTP30LQ1IKINUL',
+      clientSecret: 'NRTY31TIGPDGK5GWODTMDKTQL1JTW1VKLWHWZJR425E03WSN'
+    });
+
+    this.setState({ restData: [] })
+
+    axios.get('https://us1.locationiq.com/v1/search.php?key=772ec16a0f4f17&q=' + zip + '&format=json')
+      .then(response => {
+
+        var params = {
+        "ll": response.data[0].lat + ',' + response.data[0].lon
+      };
+
+      foursquare.venues.getVenues(params)
+        .then(res => {
+      
+          this.getLocation(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`, res.response.venues[0].location.city);
+        });
+
+      })
   }
 
 
@@ -106,6 +134,7 @@ class App extends Component {
         }
         if (!noSubzone) {
           alert("made it here")
+           console.log(res.data.location_suggestions[0])
           this.getFoodData(res.data.location_suggestions[0])
         }
 
@@ -115,6 +144,9 @@ class App extends Component {
 
 
   }
+
+
+
 
 
 
