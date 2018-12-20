@@ -74,24 +74,31 @@ class App extends Component {
 
   getLocation = (position, city) => {
 
+console.log(position);
 
     var config = {
       headers: { "user-key": ALLAN_API_KEY }
     };
 
-    axios.get("https://developers.zomato.com/api/v2.1/locations?query=" + city + "&lat=" + position + "&count=5", config)
-
-
+    axios.get("https://developers.zomato.com/api/v2.1/locations?query=" + city + "&lat=" + position + "&count=10", config)
       .then(res => {
+        var noSubzone = false;
+        console.log(res.data.location_suggestions)
         for (var i = 0; i < res.data.location_suggestions.length; i++) {
           if (res.data.location_suggestions[i].entity_type === "subzone") {
             console.log(res.data.location_suggestions[i])
+            noSubzone = true;
             this.getFoodData(res.data.location_suggestions[i])
             break;
 
           }
 
         }
+          if(!noSubzone){
+            alert("made it here")
+            this.getFoodData(res.data.location_suggestions[0])
+          }
+        
 
 
       })
