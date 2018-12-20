@@ -11,6 +11,7 @@
     "node-fetch": "^2.3.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-foursquare": "^1.0.3",
     "react-geocode": "^0.1.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

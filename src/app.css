@@ -131,8 +131,17 @@
     padding: 2%;
 }
 
+#locButn{
+
+     background: steelblue;
+     border: solid steelblue;
+      border-radius: 100px;
+      animation: pulse 4s infinite;
+
+}
+
 #searchFields {
-    margin: 5% 5% 0% 25%;
+    margin: 5% 0% 0% 25%;
     width: 50%;
 }
 

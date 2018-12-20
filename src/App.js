@@ -57,24 +57,34 @@ class App extends Component {
   componentDidMount1 = () => {
 
 
+    var foursquare = require('react-foursquare')({
+      clientID: 'IGNGESR0JJP23AWVCGP5PZ2DML2XRL24BIVYAYAE02M4NJXZ',
+      clientSecret: 'GGSXKNDSERAIUUWZLMUKWL14MZ2BTITXX2MTVXS1AA5VIJZQ'
+    });
+
     var api;
 
     navigator.geolocation.getCurrentPosition((position) => {
-      api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-      this.getLocation(api, "irvine");
+
+      var params = {
+        "ll": position.coords.latitude + ',' + position.coords.longitude
+      };
+
+      foursquare.venues.getVenues(params)
+        .then(res => {
+
+          api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+          this.getLocation(api, res.response.venues[0].location.city);
+        });
+
+
     });
 
   }
 
 
-
-
-
-
-
   getLocation = (position, city) => {
 
-console.log(position);
 
     var config = {
       headers: { "user-key": ALLAN_API_KEY }
@@ -94,11 +104,11 @@ console.log(position);
           }
 
         }
-          if(!noSubzone){
-            alert("made it here")
-            this.getFoodData(res.data.location_suggestions[0])
-          }
-        
+        if (!noSubzone) {
+          alert("made it here")
+          this.getFoodData(res.data.location_suggestions[0])
+        }
+
 
 
       })
@@ -148,6 +158,11 @@ console.log(position);
       })
   }
 
+  getCurrentPosition = () =>{
+    this.setState({ restData: [] })
+    this.componentDidMount1();
+  }
+
 
   callRestaurantPage = (rest) => {
     var tempObj = {}
@@ -178,15 +193,15 @@ console.log(position);
   render() {
     return (
       <div>
-  
+
         {
           this.state.loggedIn && (
-           <Navbar />
+            <Navbar />
           )
 
         }
 
-    
+
 
         {
           this.state.restData && (
@@ -194,9 +209,9 @@ console.log(position);
               <Switch>
                 <Route exact path='/' render={(renderProps) => <Login login={this.login} />} />
                 <div id="componentContainer">
-                <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} />} />
-                <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest} />} />
-                <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} popularity={this.state.popularity} numRest={this.state.numRest} numRest={this.state.numRest} nightLifeIndex={this.state.nightLifeIndex}/>} />
+                  <Route path='/mainPage/' render={(renderProps) => <MainPage restData={this.state.restData} popularity={this.state.popularity} cityName={this.state.cityName} callRestaurantPage={this.callRestaurantPage} getLocationFromZip={this.getLocationFromZip} getCurrentPosition={this.getCurrentPosition} />} />
+                  <Route path='/restaurant/' render={(renderProps) => <Restaurant singleRest={this.state.singleRest} />} />
+                  <Route path='/cuisines/' render={(renderProps) => <Cuisines cuisines={this.state.topFoods} cityName={this.state.cityName} popularity={this.state.popularity} numRest={this.state.numRest} numRest={this.state.numRest} nightLifeIndex={this.state.nightLifeIndex} />} />
                 </div>
               </Switch>
             </div>

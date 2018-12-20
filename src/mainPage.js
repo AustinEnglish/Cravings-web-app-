@@ -5,6 +5,7 @@ import rest from './images/rest.jpg'
 import cafe from './images/cafe.jpg'
 import loadingGif from './images/loading.gif'
 import GoogleImageSearch from './googlesearch';
+import Location from './images/location.png';
 
 
 //main page that'll have all the data
@@ -21,7 +22,7 @@ class MainPage extends Component {
 
 
   getImage2 = (name, index) => {
-
+  
     GoogleImageSearch.searchImage(name)
       .then((response) => {
         this.setState({ images: [...this.state.images, index + response[0]] })
@@ -49,15 +50,21 @@ class MainPage extends Component {
 
   componentDidMount() {
 
-    this.state.images = [];
+  this.state.images = [];
 
+  }
+
+
+  getCurrentPosition1 = ()=>{
+    this.state.images = [];
+    this.props.getCurrentPosition();
   }
 
 
 
   redirectToRestaurantJS = (restaurant) => {
-    this.state.images = [];
- 
+  
+   this.state.images = [];
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
 
@@ -142,8 +149,8 @@ class MainPage extends Component {
 
         <div id="search">
           <h5>Find Restaurants</h5>
+          <button type="button" id="locButn" className="float-right" onClick={this.getCurrentPosition1}><img src={Location} height="50" width="50" /></button>
           <div id="searchFields">
-
             <input className="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
 
 
