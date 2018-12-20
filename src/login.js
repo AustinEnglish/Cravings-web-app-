@@ -58,7 +58,7 @@ class Login extends Component {
                     </div>
                 </form>
                 <button 
-                        className="btn btn-primary login-btn"
+                        className="login-btn"
                         onClick={this.checkLogin}
                         >Login</button>
                 <div>

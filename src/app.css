@@ -155,6 +155,7 @@
 #searchFields {
     margin: 5% 0% 0% 25%;
     width: 50%;
+
 }
 
 .searchInfo {
@@ -187,6 +188,14 @@
 
 .login-btn {
     margin: 20px 390px;
+    cursor: url('images/fork2.png'), pointer;
+    background-color: blue;
+    color: white;
+    border-radius: 25px;
+
+}
+.login-btn:hover{
+ background-color: lightblue;
 }
 
 
@@ -228,7 +237,9 @@ p {
     background-color: rgba(113, 113, 230, 0.178);
 }
 
-
+body, html, #root, form, input, select, option, button{
+    cursor: url('images/fork2.png'), pointer;
+}
 #revolvingImg{
     border: solid #6593f5;
 }
