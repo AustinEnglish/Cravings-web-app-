@@ -189,3 +189,6 @@ p {
 .table-body-background {
     background-color: rgba(113, 113, 230, 0.178);
 }
+body, html {
+    cursor: url('images/fork2.png'), pointer;
+}
