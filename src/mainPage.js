@@ -33,16 +33,11 @@ class MainPage extends Component {
 
   organize = (index) => {
 
-  if(this.state.loading === true){
-    this.setState({loading:false})
-  }
-
 
       for (var i = 0; i < this.state.images.length; i++) {
 
         if (this.state.images[i][0] == index) {
 
-          console.log(this.state.images[i].substr(1))
           return this.state.images[i].substr(1);
 
         }
