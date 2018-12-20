@@ -103,6 +103,14 @@
     margin: 5% 0% 0% 0%;
 }
 
+#rest-contain{
+
+     margin: auto;
+    text-align: center;
+    padding: 10px;
+    
+}
+
 #restText {
     background: lightblue;
     border-top: solid lightblue;
@@ -136,9 +144,13 @@
      background: steelblue;
      border: solid steelblue;
       border-radius: 100px;
-      animation: pulse 4s infinite;
+       outline:none;
+       text-align:center;
+      animation: pulse 2s infinite;
 
 }
+
+
 
 #searchFields {
     margin: 5% 0% 0% 25%;
@@ -148,6 +160,9 @@
 .searchInfo {
     padding: 1%;
     margin: 1%;
+    border-radius: 10px;
+    color: white;
+    
 }
 
 .background-div {
@@ -156,6 +171,12 @@
     height: 100vh;
     overflow: hidden;
     font-family: 'Tenor Sans', sans-serif;
+}
+
+.singleImage{
+    width: 100px;
+    height: 100px;
+
 }
 
 .username-div {
@@ -170,10 +191,29 @@
     margin: 20px 390px;
 }
 
+
 p {
     font-size: 200%;
     margin: 80px 250px;
 }
+
+.tableData{
+    width: 15%;
+    padding: 50%;
+    height: 340px;
+    text-align:center;
+
+}
+
+#imagesDisplay{
+     margin: auto;
+    text-align: center;
+    width: 20%;
+  padding: 10px;
+
+
+}
+
 
 .h1-tag {
     margin: 30px 50px;
@@ -188,4 +228,25 @@ p {
 }
 .table-body-background {
     background-color: rgba(113, 113, 230, 0.178);
+}
+
+
+#revolvingImg{
+    border: solid #6593f5;
+}
+
+
+.single-title{
+
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
+    font-size: 50px;
+    padding: 1%;
+    text-shadow: 1px 1px 2px black, 0 0 25px navy, 0 0 5px darkblue;
+
+}
+
+.restTable{
+     box-shadow: 10px 10px;
+    
 }

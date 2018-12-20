@@ -13,10 +13,10 @@ class Cuisines extends Component {
 
   render() {
     return (
-      <div id='item'>
+      <div id='rest-contain'>
         <div className="single-rest-div">
-        <h1> Top Cuisines for {this.props.cityName}</h1>
-          <table className="table table-bordered">
+        <h1 className="single-title"> Top Cuisines for {this.props.cityName}</h1>
+          <table className="table table-bordered restTable">
             <thead>
               <tr className="table-header-background">
                 <th><h1>Foods</h1></th>
@@ -29,7 +29,7 @@ class Cuisines extends Component {
               {this.props.cuisines.map((cuisine, index) => {
                 return (
                   <div key={index}>
-                    <td><h2>{cuisine}</h2></td>
+                    <h2>{cuisine}</h2>
                   </div>
                 )
               })}
