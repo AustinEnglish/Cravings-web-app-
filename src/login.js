@@ -40,6 +40,7 @@ class Login extends Component {
                 <div className="h1-tag">
                     <h1>Cravings</h1>
                 </div>
+            
                 <form className="form-inline">
                     <div className="form-group username-div" >
                         <label>Username&nbsp;</label>
@@ -61,12 +62,12 @@ class Login extends Component {
                         onClick={this.checkLogin}
                         >Login</button>
                 <div>
+                </div>
                     <p>
                         What are you craving?
                     </p>
                 </div>
 
-            </div>
          );
         }
     }

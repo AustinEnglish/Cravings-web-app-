@@ -16,12 +16,15 @@ class MainPage extends Component {
     redirCuisines: false,
     zip: '',
     city: '',
-    images: [],
+    images: []
+
   }
 
 
 
   getImage2 = (name, index) => {
+  
+    name += " yelp";
   
     GoogleImageSearch.searchImage(name)
       .then((response) => {
@@ -33,8 +36,7 @@ class MainPage extends Component {
   }
 
   organize = (index) => {
-
-
+   
       for (var i = 0; i < this.state.images.length; i++) {
 
         if (this.state.images[i][0] == index) {
@@ -64,7 +66,6 @@ class MainPage extends Component {
 
   redirectToRestaurantJS = (restaurant) => {
   
-   this.state.images = [];
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
 
@@ -73,6 +74,7 @@ class MainPage extends Component {
   redirectFunc = () => {
 
     this.state.images = [];
+  
   
 
     if (this.state.choice === "restaurants") {
@@ -84,6 +86,9 @@ class MainPage extends Component {
       this.props.getLocationFromZip(this.state.zip, this.state.city);
       this.setState({ redirCuisines: true })
     }
+
+    this.state.zip = '';
+    this.state.city = '';
 
   }
 
@@ -143,13 +148,13 @@ class MainPage extends Component {
             </div>
 
           )}
-          <p>&nbsp;</p>
+         
 
         </div>
-
+         <p>&nbsp;</p>
         <div id="search">
           <h5>Find Restaurants</h5>
-          <button type="button" id="locButn" className="float-right" onClick={this.getCurrentPosition1}><img src={Location} height="50" width="50" /></button>
+ <div id="locButnDiv"><button type="button" id="locButn" className="float-right" onClick={this.getCurrentPosition1}><img src={Location} height="50" width="50" /></button></div>
           <div id="searchFields">
             <input className="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
 
