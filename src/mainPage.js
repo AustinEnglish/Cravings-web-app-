@@ -160,13 +160,14 @@ class MainPage extends Component {
 
 
             <input className="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
-
+            
             <select className="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
               <option value="">Choose one</option>
               <option value="restaurants">Top Restaurants</option>
               <option value="cuisines" >Top Cuisines</option>
             </select>
-            <button type="button" className="btn btn-primary searchInfo" onClick={this.redirectFunc}>Submit</button>
+            
+            <button type="button" className="mainPage-btn searchInfo" onClick={this.redirectFunc}>Submit</button>
           </div>
 
         </div>
