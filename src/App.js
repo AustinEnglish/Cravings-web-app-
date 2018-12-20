@@ -22,7 +22,6 @@ class App extends Component {
     topFoods: [],
     singleRest: {},
     loggedIn: false,
-    loading: false,
     numRest: "",
     nightLifeIndex: "",
 
@@ -57,7 +56,6 @@ class App extends Component {
 
   componentDidMount1 = () => {
 
-this.setState({loading:true})
 
     var api;
 
@@ -128,8 +126,6 @@ this.setState({loading:true})
 
       })
 
-      this.setState({loading:false})
-
   }
 
 
@@ -137,15 +133,11 @@ this.setState({loading:true})
 
   getLocationFromZip = (zip, city) => {
 
-    this.setState({loading:true})
-
     this.setState({ restData: [] })
-    alert(city);
 
     axios.get('https://us1.locationiq.com/v1/search.php?key=772ec16a0f4f17&q=' + zip + '&format=json')
       .then(response => {
         this.getLocation(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`, city)
-        alert(`lat=${response.data[0].lat}&lon=${response.data[0].lon}`)
       })
   }
 
@@ -187,16 +179,7 @@ this.setState({loading:true})
 
         }
 
-        {
-          this.state.loading && (
-            <div id="mainContainer">
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-           <div id="loadingIcon"><img  src={loadingGif} alt='' /></div>
-           </div>
-          )
-
-        }
+    
 
         {
           this.state.restData && (
