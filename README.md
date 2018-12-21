@@ -20,7 +20,7 @@ Clone and download from github.
 
 ## Built With
 
-* [react](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [react](https://reactjs.org/) - The web framework used
 
 
 ## Authors
