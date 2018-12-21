@@ -54,9 +54,10 @@ class App extends Component {
 
   }
 
+
   componentDidMount1 = () => {
 
-
+//get zip from corrdinates
     var foursquare = require('react-foursquare')({
       clientID: 'GH4BWS2A1V0K0RAIGWA401NNQ04JUIF55HUTP30LQ1IKINUL',
       clientSecret: 'NRTY31TIGPDGK5GWODTMDKTQL1JTW1VKLWHWZJR425E03WSN'
@@ -72,11 +73,8 @@ class App extends Component {
 
       foursquare.venues.getVenues(params)
         .then(res => {
-          console.log(res.response.venues)
           api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-          console.log(res.response.venues[0].location.postalCode);
           this.getLocationFromZip1(res.response.venues[0].location.postalCode)
-          //this.getLocation(api, "laguna niguel");
         });
 
 
@@ -121,10 +119,8 @@ class App extends Component {
     axios.get("https://developers.zomato.com/api/v2.1/locations?query=" + city + "&lat=" + position + "&count=10", config)
       .then(res => {
         var noSubzone = false;
-        console.log(res.data.location_suggestions)
         for (var i = 0; i < res.data.location_suggestions.length; i++) {
           if (res.data.location_suggestions[i].entity_type === "subzone") {
-            console.log(res.data.location_suggestions[i])
             noSubzone = true;
             this.getFoodData(res.data.location_suggestions[i])
             break;
@@ -133,8 +129,6 @@ class App extends Component {
 
         }
         if (!noSubzone) {
-          alert("made it here")
-           console.log(res.data.location_suggestions[0])
           this.getFoodData(res.data.location_suggestions[0])
         }
 
@@ -163,7 +157,6 @@ class App extends Component {
     axios.get("https://developers.zomato.com/api/v2.1/location_details?entity_id=" + data.entity_id + "&entity_type=subzone", config)
 
       .then(res => {
-        console.log(res.data);
         this.setState({
           cityName: data.title,
           restData: res.data.best_rated_restaurant,
@@ -171,7 +164,7 @@ class App extends Component {
           topFoods: res.data.top_cuisines,
           numRest: res.data.num_restaurant,
           nightLifeIndex: res.data.nightlife_index
-        }, () => console.log(this.state.topFoods))
+        })
 
       })
 
@@ -214,7 +207,7 @@ class App extends Component {
       ...this.state,
       singleRest: tempObj
 
-    }, () => console.log(this.state.singleRest.name))
+    })
 
 
 

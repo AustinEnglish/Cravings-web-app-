@@ -16,48 +16,48 @@ class MainPage extends Component {
     redirCuisines: false,
     zip: '',
     city: '',
-    images: []
+    images: [],
+    invalidInput: false
 
   }
 
 
 
   getImage2 = (name, index) => {
-  
+
     name += " yelp";
-  
+
     GoogleImageSearch.searchImage(name)
       .then((response) => {
         this.setState({ images: [...this.state.images, index + response[0]] })
-        console.log(index + response[0])
       })
 
 
   }
 
   organize = (index) => {
-   
-      for (var i = 0; i < this.state.images.length; i++) {
 
-        if (this.state.images[i][0] == index) {
+    for (var i = 0; i < this.state.images.length; i++) {
 
-          return this.state.images[i].substr(1);
+      if (this.state.images[i][0] == index) {
 
-        }
+        return this.state.images[i].substr(1);
+
       }
+    }
 
-    
+
   }
 
 
   componentDidMount() {
 
-  this.state.images = [];
+    this.state.images = [];
 
   }
 
 
-  getCurrentPosition1 = ()=>{
+  getCurrentPosition1 = () => {
     this.state.images = [];
     this.props.getCurrentPosition();
   }
@@ -65,7 +65,7 @@ class MainPage extends Component {
 
 
   redirectToRestaurantJS = (restaurant) => {
-  
+
     this.props.callRestaurantPage(restaurant);
     this.setState({ redir: true })
 
@@ -73,9 +73,11 @@ class MainPage extends Component {
 
   redirectFunc = () => {
 
+if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zip)){
+
     this.state.images = [];
-  
-  
+
+
 
     if (this.state.choice === "restaurants") {
       this.props.getLocationFromZip(this.state.zip, this.state.city);
@@ -89,6 +91,13 @@ class MainPage extends Component {
 
     this.state.zip = '';
     this.state.city = '';
+}
+else{
+  this.setState({invalidInput:true})
+  this.state.zip = '';
+  this.state.city = '';
+
+}
 
   }
 
@@ -98,7 +107,10 @@ class MainPage extends Component {
       <div>
         {
           this.state.images.length < 10 && (
-              <div id="loadingIcon"><img src={loadingGif} alt='' /></div>
+            <div>
+            <p>&nbsp;</p>
+            <div id="loadingIcon"><img src={loadingGif} alt='' /></div>
+            </div>
           )}
 
 
@@ -116,11 +128,11 @@ class MainPage extends Component {
 
         <div>
           {this.state.images.length == 10 && (
-            
+
 
 
             <div id='mainpage'>
-          {this.state.loading = false}
+              {this.state.loading = false}
               <div className="single-rest-div">
 
                 <h1 id="title">Top Trending Restaurants in <b>{this.props.cityName}</b> </h1>
@@ -148,28 +160,31 @@ class MainPage extends Component {
             </div>
 
           )}
-         
 
-        </div>
-         <p>&nbsp;</p>
-        <div id="search">
-          <h5>Find Restaurants</h5>
- <div id="locButnDiv"><button type="button" id="locButn" className="float-right" onClick={this.getCurrentPosition1}><img src={Location} height="50" width="50" /></button></div>
-          <div id="searchFields">
-            <input className="searchInfo" type="text" placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
+        
+
+          <p>&nbsp;</p>
+          {this.state.images.length == 10 && (
+            <div id="search">
+              <h5>Find Restaurants</h5>
+              <div id="locButnDiv"><button type="button" id="locButn" className="float-right" onClick={this.getCurrentPosition1}><img src={Location} height="50" width="50" /></button></div>
+              <div id="searchFields">
+                <input className="searchInfo" pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"placeholder="Search Zip..." value={this.state.zip} onChange={(e) => this.setState({ zip: e.target.value })} />
 
 
-            <input className="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
-            
-            <select className="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
-              <option value="">Choose one</option>
-              <option value="restaurants">Top Restaurants</option>
-              <option value="cuisines" >Top Cuisines</option>
-            </select>
-            
-            <button type="button" className="mainPage-btn searchInfo" onClick={this.redirectFunc}>Submit</button>
-          </div>
+                <input className="searchInfo" type="text" placeholder="Search City..." value={this.state.city} onChange={(e) => this.setState({ city: e.target.value })} />
 
+                <select className="searchInfo" onChange={e => { this.setState({ choice: e.target.value }) } }>
+                  <option value="">Choose one</option>
+                  <option value="restaurants">Top Restaurants</option>
+                  <option value="cuisines" >Top Cuisines</option>
+                </select>
+
+                <button type="button" className="mainPage-btn searchInfo" onClick={this.redirectFunc}>Submit</button>
+              </div>
+
+            </div>
+          )}
         </div>
 
 

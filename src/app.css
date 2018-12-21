@@ -13,7 +13,7 @@
 #navContainer{
     border: solid #6593f5;
     width: fill;
-    height: 70px;
+    height: 80px;
     background: #6593f5;
     font-family: 'Tenor Sans', sans-serif;
 
@@ -252,6 +252,12 @@ p {
   padding: 10px;
 
 
+}
+
+#validate{
+    text-align: center;
+    width: 40%;
+    background-color: white;
 }
 
 

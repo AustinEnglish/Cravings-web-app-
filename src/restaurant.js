@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleImageSearch from './googlesearch';
+import loadingGif from './images/loading.gif'
 
 
 //single Restaurant page
@@ -36,7 +37,8 @@ class Restaurant extends Component {
 
   tick = () => {
 
-    if (this.counter > 79) {
+    if (this.counter > 70) {
+    
       this.setState({
         counter: 0
       });
@@ -102,6 +104,9 @@ class Restaurant extends Component {
               <td id="imagesDisplay">
                 {this.state.images.length === 80 && (
                     <img id="revolvingImg" src={this.state.images[this.state.counter]} height="300" width="300" />
+                )}
+                 {this.state.images.length < 80 && (
+                     <div id="loadingIcon"><img src={loadingGif} alt='' /></div>
                 )}
 
               </td>
