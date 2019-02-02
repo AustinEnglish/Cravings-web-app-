@@ -25,7 +25,7 @@ Clone and download from github.
 
 ## Authors
 
-* **Austin English** - *co-parnter* - **Allan Kounlavong** - *co-partner*
+* **Austin English** - *co-parnter (back-end)* - **Allan Kounlavong** - *co-partner (front end)*
 
 
 
