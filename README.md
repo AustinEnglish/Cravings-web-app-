@@ -17,7 +17,12 @@ Clone and download from github.
 ```
 
 ## Login Page
-![cipher pages](https://github.com/AustinEnglish/Cravings-web-app-/blob/master/Screen%20Shot%202019-02-02%20at%201.07.02%20PM.png?raw=true "Title")
+![login page](https://github.com/AustinEnglish/Cravings-web-app-/blob/master/Screen%20Shot%202019-02-02%20at%201.07.02%20PM.png?raw=true "Title")
+
+
+## Current location top trending restaurants
+![current location top foods](https://github.com/AustinEnglish/Cravings-web-app-/blob/master/Screen%20Shot%202019-02-02%20at%201.08.32%20PM.png?raw=true "Title")
+
 
 
 
