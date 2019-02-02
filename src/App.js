@@ -40,6 +40,9 @@ class App extends Component {
   }
 
 
+
+
+
   login = (username, password) => {
     for (var user of this.state.users) {
       if (user.username === username && user.password === password) {
@@ -53,6 +56,10 @@ class App extends Component {
     return false;
 
   }
+
+
+
+
 
 
   componentDidMount1 = () => {
@@ -83,6 +90,9 @@ class App extends Component {
   }
 
 
+
+
+
   getLocationFromZip1 = (zip) => {
 
     var foursquare = require('react-foursquare')({
@@ -107,6 +117,9 @@ class App extends Component {
 
       })
   }
+
+
+
 
 
   getLocation = (position, city) => {
@@ -173,6 +186,10 @@ class App extends Component {
 
 
 
+
+
+
+
   getLocationFromZip = (zip, city) => {
 
     this.setState({ restData: [] })
@@ -183,10 +200,19 @@ class App extends Component {
       })
   }
 
+
+
+
+
+
   getCurrentPosition = () =>{
     this.setState({ restData: [] })
     this.componentDidMount1();
   }
+
+
+
+
 
 
   callRestaurantPage = (rest) => {
@@ -225,8 +251,6 @@ class App extends Component {
           )
 
         }
-
-
 
         {
           this.state.restData && (
