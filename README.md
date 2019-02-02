@@ -24,6 +24,10 @@ Clone and download from github.
 ![current location top foods](https://github.com/AustinEnglish/Cravings-web-app-/blob/master/Screen%20Shot%202019-02-02%20at%201.08.32%20PM.png?raw=true "Title")
 
 
+## Search Locations
+![search location top foods](https://github.com/AustinEnglish/Cravings-web-app-/blob/master/Screen%20Shot%202019-02-02%20at%201.09.38%20PM.png?raw=true "Title")
+
+
 
 
 ## Built With
